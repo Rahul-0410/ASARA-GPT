@@ -17,4 +17,4 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB;
-/*schema will be updated in this file */
+
