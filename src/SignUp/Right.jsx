@@ -16,7 +16,7 @@ function Right() {
         // console.log(userData);
        if(validateData()){
       const user = await   SignupUser(userData);
-      navigate("/home");
+      navigate("/");
        }
 
     }

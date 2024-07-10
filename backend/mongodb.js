@@ -1,29 +1,10 @@
-// const mongoose = require('mongoose');
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 
-// const result = dotenv.config();
-// if (result.error) {
-//     console.error('Error loading .env file:', result.error);
-// }
-
-
-// const connectDB = async () => {
-//     try {
-//         await mongoose.connect(process.env.MONGO_URI)
-//         console.log("Connected to MongoDB");
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// }
-
-// connectDB();
-
-// module.exports={};
-
+const result = dotenv.config();
 
 const {connect} = require("mongoose");
 
-const MongoUrl = "mongodb+srv://rgs786999:8wm6lhVoV59yirSJ@cluster0.9olfp7w.mongodb.net";
+const MongoUrl =process.env.MONGO_URI;
 
 const DB_NAME= `asra`
 

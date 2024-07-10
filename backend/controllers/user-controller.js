@@ -28,7 +28,18 @@ const loginUser = async(req, res) => {
         return res.status(500).send({ message: error.message });
     }
 }
+const googleloginUser = async(req, res) => {
+    try{
+        const {email}=req.body;
+        const user = await UserService.googleloginUser(email);
+        return res.status(200).send(user);
+    }
+    catch(error){
+        console.error(error);
+        return res.status(500).send({ message: error.message });
+    }
+}
 
 
 
-module.exports = { addNewUser, loginUser}
+module.exports = { addNewUser, loginUser,googleloginUser}

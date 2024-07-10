@@ -8,5 +8,5 @@ const userController = require('./controllers/user-controller')
 
 router.post("/signup", userController.addNewUser);
 router.post("/login", userController.loginUser);
-
+router.post("/googlelogin", userController.googleloginUser);
 module.exports = router;

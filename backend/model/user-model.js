@@ -3,7 +3,7 @@ const { isEmail } = require("validator");
 const { checkPassword, encryptPassword } = require("../bcrypt");
 
 const userSchema = new Schema({
-    username: { type: String, trim: true, required: true },
+    username: { type: String, trim: true},
     email: {
         type: String, lowercase: true, trim: true, unique: true,
         validate: {
@@ -13,7 +13,7 @@ const userSchema = new Schema({
         }
     },
     password: {
-        type: String, trim: true, required: true,
+        type: String, trim: true,
         validate: {
             validator(password) {
                 if (password.includes(" ") || password.includes("\n") || password.includes("\t")) {
@@ -27,7 +27,7 @@ const userSchema = new Schema({
         }
     },
     confirmpassword: {
-        type: String, trim: true, required: true,
+        type: String, trim: true, 
         validate: {
             validator(password) {
                 if (password.includes(" ") || password.includes("\n") || password.includes("\t")) {
