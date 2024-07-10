@@ -16,7 +16,7 @@ function Left() {
         "You are not alone in the struggles of life. Entire cosmos is with you. It evolves through the way you face and overcome challenges of life. Use everything in your advantage."
       </blockquote>
 
-      <button onClick={(e)=> naviagte("/login")} className="w-1/2 justify-center rounded-md border border-transparent 
+      <button onClick={(e)=> naviagte("/")} className="w-1/2 justify-center rounded-md border border-transparent 
       bg-[#257ba0] py-2 px-2 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">
         Login
       </button>
