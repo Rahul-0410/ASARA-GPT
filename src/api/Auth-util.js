@@ -20,7 +20,7 @@ const SignupUser = async (userData) => {
     return user;
 }
 const GoogleloginUser = async (userData) => {
-    // Make API call to Google OAuth server to get user's email
+
     const response = await axios.get(`https://oauth2.googleapis.com/tokeninfo?id_token=${userData}`);
     const { email } = response.data;
     console.log(email);

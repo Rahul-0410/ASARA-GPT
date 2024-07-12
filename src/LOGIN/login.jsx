@@ -6,9 +6,10 @@ import './login.css';  // Ensure the CSS file is correctly imported
 function Login() {
     return (
         <div  className="login-bg">
+
         <div className="login-container">
             <div className="login-left">
-                <Left />
+                <Left/>
             </div>
             <div className="login-right">
                 <Right />
