@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.login-bg {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT782lxjDJTqoJ7hcq2CYZscIgJICOH1qrNmQ&s"); 
+
+    background-color: #2E8BC0;  */
+    background-color: #fdebbe;
+}
+
+.login-container {
+    display: flex;
+    height: 80vh;
+    width: 80vw;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Stronger box shadow */
+    background-color: #e9e2ca;
+}
+
+
+.login-left {
+    flex: 2.5;
+    background-color: #e9e2ca;; /* Light blue */
+}
+
+.login-right {
+    flex: 1.5;
+    background-color: #ffffff; /* Light beige */
+}

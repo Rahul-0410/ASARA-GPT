@@ -1,27 +1,18 @@
-import React from 'react'
+import React from 'react';
+import './Left.css';
 import Img from '../assets/dudes-sad-man.png'
 import { useNavigate } from 'react-router-dom'
-
-function Left() {
+const Left = () => {
   const naviagte = useNavigate();
   return (
-    <div className='bg-[#f2efe4] min-h-screen flex flex-col items-center p-8'>
-      <img className="w-[300px] h-[450px] mb-8" src={Img} alt="Sad man" />
 
-      <h1 className="text-3xl font-extrabold text-center uppercase tracking-wide mb-4 text-gray-900 shadow-text">
-        YOU ARE NOT ALONE
-      </h1>
-
-      <blockquote className="text-lg text-[#808080] italic text-center max-w-md mb-4">
-        "You are not alone in the struggles of life. Entire cosmos is with you. It evolves through the way you face and overcome challenges of life. Use everything in your advantage."
-      </blockquote>
-
-      <button onClick={(e)=> naviagte("/")} className="w-1/2 justify-center rounded-md border border-transparent 
-      bg-[#257ba0] py-2 px-2 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">
-        Login
-      </button>
+    <div className="Rightpanel">
+      <img src={Img} alt="Your description" />
+      <h1> YOU ARE NOT ALONE</h1>
+      <p>"You are not alone in the struggles of life. Entire cosmos is with you. It evolves through the way you face and overcome challenges of life. Use everything in your advantage."</p>
+      <button onClick={(e)=> naviagte("/")}>Login</button>
     </div>
-  )
-}
+  );
+};
 
-export default Left
+export default Left;
