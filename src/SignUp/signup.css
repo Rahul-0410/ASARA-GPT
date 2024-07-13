@@ -1,11 +1,9 @@
-/* signup.css */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-.login-bg {
+.signin-bg {
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -14,7 +12,7 @@ body {
     background-color: #fdebbe;
 }
 
-.login-container {
+.signin-container {
     display: flex;
     height: 80vh;
     width: 80vw;
@@ -22,25 +20,25 @@ body {
     background-color: #e9e2ca;
 }
 
-.login-right {
+.signin-right {
     flex: 2.5;
     background-color: #e9e2ca;
 }
 
-.login-left {
+.signin-left {
     flex: 1.5;
     background-color: #ffffff;
 }
 
 @media (max-width: 1024px) {
-    .login-container {
+    .signin-container {
         width: 90vw;
         height: 70vh;
     }
 }
 
 @media (max-width: 768px) {
-    .login-container {
+    .signin-container {
         flex-direction: column;
         width: 90vw;
         height: auto;
@@ -48,7 +46,7 @@ body {
         align-items: center;
     }
 
-    .login-left {
+    .signin-left {
         width: 80%;
         margin-top: 50px;
         display: flex;
@@ -56,20 +54,20 @@ body {
         justify-content: center;
     }
 
-    .login-right {
+    .signin-right {
         width: 100%;
     }
 }
 
 @media (max-width: 600px) {
-    .login-container {
+    .signin-container {
         width: 90vw;
         height: auto;
         justify-content: center;
         align-items: center;
     }
 
-    .login-left {
+    .signin-left {
         width: 70%;
         margin-top: 50px;
         display: flex;
@@ -77,39 +75,39 @@ body {
         justify-content: center;
     }
 
-    .login-right {
+    .signin-right {
         width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    .login-container {
+    .signin-container {
         width: 95vw;
     }
 
-    .login-left {
+    .signin-left {
         width: 100%;
         margin-top: 20px;
     }
 
-    .login-right {
+    .signin-right {
         width: 100%;
     }
 }
 
 @media (max-width: 320px) {
-    .login-container {
+    .signin-container {
         width: 100vw;
         padding: 10px;
     }
 
-    .login-left {
+    .signin-left {
         width: 100%;
         margin-top: 10px;
         padding: 10px;
     }
 
-    .login-right {
+    .signin-right {
         width: 100%;
     }
 }

@@ -3,14 +3,14 @@ import Left from './Left';
 import Right from './Right';
 import './signup.css'
 
-function SignUp() {
+function SignIn() {
   return (
-    <div className="login-bg">
-      <div className="login-container">
-        <div className="login-left">
+    <div className="signin-bg">
+      <div className="signin-container">
+        <div className="signin-left">
           <Left />
         </div>
-        <div className="login-right">
+        <div className="signin-right">
           <Right />
         </div>
       </div>
@@ -18,4 +18,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignIn;
