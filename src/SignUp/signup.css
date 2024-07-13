@@ -1,3 +1,5 @@
+/* signup.css */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -9,9 +11,6 @@ body {
     width: 100vw;
     justify-content: center;
     align-items: center;
-    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT782lxjDJTqoJ7hcq2CYZscIgJICOH1qrNmQ&s"); 
-
-    background-color: #2E8BC0;  */
     background-color: #fdebbe;
 }
 
@@ -19,17 +18,98 @@ body {
     display: flex;
     height: 80vh;
     width: 80vw;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); /* Stronger box shadow */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     background-color: #e9e2ca;
 }
 
-
-.login-left {
+.login-right {
     flex: 2.5;
-    background-color: #e9e2ca;; /* Light blue */
+    background-color: #e9e2ca;
 }
 
-.login-right {
+.login-left {
     flex: 1.5;
-    background-color: #ffffff; /* Light beige */
+    background-color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+    .login-container {
+        width: 90vw;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        width: 90vw;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-left {
+        width: 80%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        width: 90vw;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-left {
+        width: 70%;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 95vw;
+    }
+
+    .login-left {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .login-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .login-container {
+        width: 100vw;
+        padding: 10px;
+    }
+
+    .login-left {
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .login-right {
+        width: 100%;
+    }
 }
