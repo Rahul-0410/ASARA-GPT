@@ -1,64 +1,187 @@
+/* Left.css */
+
 .Rightpanel {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff; /* Light background color */
+    background-color: #ffffff;
     padding: 20px;
     text-align: center;
     height: 92%;
 }
 
-.Rightpanel img {/* Take twice the space compared to other elements */
-    width: 60%; /* Adjust image width as needed */
+.Rightpanel img {
+    width: 60%;
     margin-top: 5px;
-    margin-bottom: 20px; /* Space below image */
+    margin-bottom: 20px;
     height: 50%;
 }
 
 .Rightpanel p {
-
     font-size: 16px;
     font-style: italic;
-    color: #555; /* Medium gray text color */
-    margin: 20px 0; /* Space above and below */
+    color: #555;
+    margin: 20px 0;
 }
 
 .Rightpanel h1 {
-    font-size: 36px; /* Increase the font size */
-    background: linear-gradient(45deg, #007bff, #00d4ff); /* Gradient background */
-    -webkit-background-clip: text; /* Use the background as the text color */
-    -webkit-text-fill-color: transparent; /* Make the text transparent to show the background */
+    font-size: 36px;
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add text shadow */
-    font-family: 'Arial', sans-serif; /* Custom font */
-    letter-spacing: 1px; /* Increase letter spacing */
-    transition: transform 0.3s ease; /* Smooth transformation */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
 }
 
 .Rightpanel h1:hover {
-    transform: scale(1.1); /* Scale up slightly on hover */
+    transform: scale(1.1);
 }
 
 .Rightpanel button {
-    padding: 10px 20px; /* Add more padding for better appearance */
-    background-color: #2E8BC0; /* Primary color */
+    padding: 10px 20px;
+    background-color: #2E8BC0;
     color: white;
     border: none;
     border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for box-shadow and transform */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .Rightpanel button:hover {
-    background-color: #1F6A98; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+    background-color: #1F6A98;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .Rightpanel button:active {
-    transform: translateY(0); /* Remove lift on click */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Restore original shadow */
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1280px) {
+    .Rightpanel img {
+        width: 45%;
+        height: 30%;
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+    .Rightpanel button {
+        padding: 8px 14px;
+        background-color: #2E8BC0;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .Rightpanel p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Rightpanel img {
+        width: 40%;
+        height: 25%;
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+    .Rightpanel button {
+        padding: 8px 14px;
+        background-color: #2E8BC0;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .Rightpanel p {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .Rightpanel img {
+        width: 14%;
+        height: 5%;
+        margin-top: 2px;
+    margin-bottom: 3px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .Rightpanel p{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Rightpanel img {
+        width: 30%;
+        margin-top: 3px;
+        margin-bottom: 8px;
+        height: 11%;
+    }
+    .Rightpanel p{
+        font-size: 11px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .Rightpanel img {
+        width: 17%;
+        height: 10%;
+    }
+
+    .Rightpanel h1 {
+        font-size: 18px;
+    }
+
+    .Rightpanel button {
+        padding: 5px 13px;
+        font-size: 12px;
+    }
+    .Rightpanel p{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 320px) {
+    .Rightpanel img {
+        width: 25%;
+        height: 15%;
+    }
+
+    .Rightpanel h1 {
+        font-size: 20px;
+    }
+
+    .Rightpanel button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
 }

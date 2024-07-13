@@ -7,10 +7,10 @@ function SignUp() {
   return (
     <div className="login-bg">
       <div className="login-container">
-        <div className="login-right">
+        <div className="login-left">
           <Left />
         </div>
-        <div className="login-left">
+        <div className="login-right">
           <Right />
         </div>
       </div>
