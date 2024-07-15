@@ -40,8 +40,51 @@ const googleloginUser = async (email) => {
         throw new InputValidationException(error.message);
     }
 }
+const addMentalHealthQuestionnaire = async (userId, answers) => {
+    try {
+        console.log(`Adding mental health questionnaire for user ID: ${userId}`);
+        console.log('Received answers:', answers);  // Add this line
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { $set: { mentalHealthInfo: answers } },
+            { new: true, runValidators: true }
+        );
+        console.log('Updated user:', user);  // Add this line
+        if (!user) {
+            throw new Error('User not found');
+        }
+        console.log(`Mental health questionnaire added for user ID: ${userId}`);
+        return user;
+    } catch (error) {
+        console.error(`Failed to add mental health questionnaire. The error is ${error}`);
+        throw new InputValidationException(error.message);
+    }
+}
+
+const updateMentalHealthQuestionnaire = async (userId, answers) => {
+    try {
+        console.log(`Updating mental health questionnaire for user ID: ${userId}`);
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        if (!user.mentalHealthInfo) {
+            throw new Error('Mental health questionnaire not found. Please add it first.');
+        }
+        user.mentalHealthInfo = { ...user.mentalHealthInfo, ...answers };
+        await user.save();
+        console.log(`Mental health questionnaire updated for user ID: ${userId}`);
+        return user;
+    } catch (error) {
+        console.error(`Failed to update mental health questionnaire. The error is ${error}`);
+        throw new InputValidationException(error.message);
+    }
+}
+
 module.exports = {
     addNewUser,
     loginUser,
     googleloginUser,
+    addMentalHealthQuestionnaire,
+    updateMentalHealthQuestionnaire
 };

@@ -40,6 +40,32 @@ const googleloginUser = async(req, res) => {
     }
 }
 
+const addMentalHealthQuestionnaire = async(req, res) => {
+    try {
+        const userId = req.params.userId;
+        const answers = req.body;
+        const user = await UserService.addMentalHealthQuestionnaire(userId, answers);
+        return res.status(200).send(user);
+    } catch (error) {
+        console.error(error);
+        return res.status(error instanceof InputValidationException ? 400 : 500)
+            .send({ message: error.message });
+    }
+}
+
+const updateMentalHealthQuestionnaire = async(req, res) => {
+    try {
+        const userId = req.params.userId;
+        const answers = req.body;
+        const user = await UserService.updateMentalHealthQuestionnaire(userId, answers);
+        return res.status(200).send(user);
+    } catch (error) {
+        console.error(error);
+        return res.status(error instanceof InputValidationException ? 400 : 500)
+            .send({ message: error.message });
+    }
+}
 
 
-module.exports = { addNewUser, loginUser,googleloginUser}
+
+module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire}
