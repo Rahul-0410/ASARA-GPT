@@ -6,6 +6,7 @@ const {connect} = require("mongoose");
 
 const MongoUrl =process.env.MONGO_URI;
 
+
 const DB_NAME= `asra`
 
 const connectDb= async ()=>{
