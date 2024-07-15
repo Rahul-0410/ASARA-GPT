@@ -1,11 +1,11 @@
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 
-// const result = dotenv.config();
+const result = dotenv.config();
 
 const {connect} = require("mongoose");
 
-// const MongoUrl =process.env.MONGO_URI;
-const MongoUrl ="mongodb://localhost:27017";
+const MongoUrl =process.env.MONGO_URI;
+
 
 const DB_NAME= `asra`
 
