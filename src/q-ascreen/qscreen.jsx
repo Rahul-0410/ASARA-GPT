@@ -55,6 +55,7 @@ const Questions = () => {
     };
 
     return (
+        <>
         <div className="qback">
      <div className="typing-container">
         <h1 className="typing-text"><i>*Help our AI to know you by answering these questions!</i></h1>
@@ -71,7 +72,12 @@ const Questions = () => {
                 <p>Your answer: {answer}</p>
                 <button onClick={handleNextQuestion}>Next</button>
             </div>
-        </div>
+            <footer style={{ color: 'red'}}>
+                    <p>© 2024 Asara GPT. All rights reserved.</p>
+                </footer>
+        </div>  
+        </>
+        
     );
 };}
 
