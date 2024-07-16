@@ -47,7 +47,7 @@ const addMentalHealthQuestionnaire = async (userId, answers) => {
         const user = await User.findByIdAndUpdate(
             userId,
             { $set: { mentalHealthInfo: answers } },
-            { new: true, runValidators: true }
+            { runValidators: true }
         );
         console.log('Updated user:', user);  // Add this line
         if (!user) {

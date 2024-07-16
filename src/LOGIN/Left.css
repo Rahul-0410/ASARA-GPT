@@ -49,7 +49,6 @@
 .google {
     width: 150px; /* Adjust button width */
     height: 40px; /* Adjust button height */
-
     background-size: cover;
     border: none;
     cursor: pointer;

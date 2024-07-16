@@ -41,21 +41,8 @@ const userSchema = new Schema({
         }
     },
     mentalHealthInfo: {
-        anxietyPast: { 
-            binary: { type: Number, min: 0, max: 1 },
-            score: { type: Number, min: 0, max: 10 }
-        },
-        stressPast: { 
-            binary: { type: Number, min: 0, max: 1 },
-            score: { type: Number, min: 0, max: 10 }
-        },
-        isHappy: { type: Number, min: 0, max: 1 },
-        depressionExperience: { type: Number, min: 0, max: 1 },
-        lonelinessFrequency: { type: Number, min: 0, max: 10 },
-        energyLevel: { type: Number, min: 0, max: 10 },
-        physicalHealthImpact: { type: Number, min: 0, max: 1 },
-        soughtProfessionalHelp: { type: Number, min: 0, max: 1 },
-        concentrationDifficulty: { type: Number, min: 0, max: 1 }
+        type: Object,
+        default: {}
     }
 },
 { timestamps: true }

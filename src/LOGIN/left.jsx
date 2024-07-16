@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import logoImage from './images/logo-no-background.png';
 import './Left.css';
 import { GoogleLogin } from '@react-oauth/google';
-import { loginUser,GoogleloginUser } from '../api/Auth-util';
+import { loginUser, GoogleloginUser } from '../api/Auth-util';
+import { AuthContext } from '../AuthContext.jsx';
+import { useNavigate } from "react-router-dom";
 
 function Left() {
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     });
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -16,7 +20,12 @@ function Left() {
         try {
             const response = await loginUser(userData);
             console.log('Login success:', response);
-           
+            login();
+            if (response.data.mentalHealthInfo === undefined) {
+                navigate('/questions');
+            } else {
+                navigate('/home');
+            }
         } catch (error) {
             console.error('Login failed:', error);
             alert('INVALID CREDENTIAL');
@@ -30,11 +39,17 @@ function Left() {
             [name]: value
         }));
     };
+
     const handleGoogleLoginSuccess = async (credentialResponse) => {
         try {
             const response = await GoogleloginUser(credentialResponse.credential);
             console.log('Google login success:', response);
-            alert('Google login success:', response);
+            login();
+            if (response.data.mentalHealthInfo === undefined) {
+                navigate('/questions');
+            } else {
+                navigate('/home');
+            }
         } catch (error) {
             console.error('Google login failed:', error);
             alert('GOOGLE LOGIN FAILED');

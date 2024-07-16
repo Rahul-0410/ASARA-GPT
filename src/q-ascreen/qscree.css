@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+HR+Lijeva:wght@100..400&display=swap');
+
+.qback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #b1a485, #fdebbe);
+    flex-direction: column;
+}
+
+.typing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typing-text {
+    font-size: 28px;
+    font-family: "Playwrite HR Lijeva", cursive;
+    font-style: normal;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-right: 3px solid;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite, erasing 2s steps(40, end) 6s, retyping 4s steps(40, end) 8s;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #333; }
+}
+
+@keyframes erasing {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@keyframes retyping {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.qbox {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    height: 50%;
+    width: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.qbox:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.qbox.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.qbox.slide-out {
+    transform: translateX(-80%);
+    opacity: 0;
+}
+
+.qbox h1 {
+    font-size: 25px;
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.qbox button {
+    background: #2E8BC0;
+    border: none;
+    color: white;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 22px;
+    height: 20%;
+    width: 20%;
+    text-align: center;
+}
+
+.qbox button:hover {
+    background: #257BA0;
+}
+
+.qbox input[type="range"] {
+    width: 100%;
+    height: 10px;
+    margin: 20px 0;
+    border-radius: 50px;
+}
+
+.qbox p {
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .qback {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .typing-text {
+        font-size: 10px;
+        font-family: "Playwrite HR Lijeva", cursive;
+        font-style: normal;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+        border-right: 3px solid;
+        animation: none;
+    }
+
+
+    .qback h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .qbox {
+        padding: 20px;
+        height: auto;
+        width: 90%;
+        margin: 0 auto; 
+    }
+
+    .qbox h1 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .qbox button {
+        font-size: 18px;
+        height: auto;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .qbox input[type="range"] {
+        margin: 10px 0;
+    }
+
+    .qbox p {
+        font-size: 0.875rem;
+    }
+}

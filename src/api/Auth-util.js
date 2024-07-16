@@ -29,9 +29,17 @@ const GoogleloginUser = async (userData) => {
     return user;
 
 };
+const questionsanssave=async (Data) => {
+    const id=getLocalStorageUser();
+    console.log(Data);
+    console.log(id)
+    const user = await AsraApiBackend.post(`/user/${id}/mental-health-questionnaire`,{Data});
+    console.log(user)
+}
 export { 
     loginUserFunction as loginUser,
     SignupUser,
     GoogleloginUser,
     getLocalStorageUser,
+    questionsanssave,
 };
