@@ -21,7 +21,7 @@ function Left() {
             const response = await loginUser(userData);
             console.log('Login success:', response);
             login();
-            if (response.data.mentalHealthInfo === undefined) {
+            if (response.mentalHealthInfo === undefined) {
                 navigate('/questions');
             } else {
                 navigate('/home');
