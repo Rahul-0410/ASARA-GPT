@@ -5,14 +5,32 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(to right, #b1a485, #fdebbe);
+    background-color: #fdebbe;
     flex-direction: column;
 }
+footer {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position:absolute;
+    bottom: 0;
+}
 
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: black;
+}
 .typing-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #4f4e85;
+    width: 100%;
+    margin-bottom: 2%;
+    overflow: hidden;
 }
 
 .typing-text {
@@ -20,39 +38,24 @@
     font-family: "Playwrite HR Lijeva", cursive;
     font-style: normal;
     font-weight: bold;
-    color: #333;
-    text-align: center;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 40px;
-    overflow: hidden;
     border-right: 3px solid;
     white-space: nowrap;
-    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite, erasing 2s steps(40, end) 6s, retyping 4s steps(40, end) 8s;
+    animation: marquee 10s linear infinite;
 }
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #333; }
-}
-
-@keyframes erasing {
-    from { width: 100%; }
-    to { width: 0; }
-}
-
-@keyframes retyping {
-    from { width: 0; }
-    to { width: 100%; }
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 .qbox {
-    background: #ffffff;
+    background: white;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -79,9 +82,7 @@
 
 .qbox h1 {
     font-size: 25px;
-    background: linear-gradient(45deg, #007bff, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4f4e85;
     margin-bottom: 20px;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
@@ -90,7 +91,7 @@
 }
 
 .qbox button {
-    background: #2E8BC0;
+    background: #4f4e85;
     border: none;
     color: white;
     margin: 10px;
@@ -119,6 +120,10 @@
     margin-top: 10px;
     color: #333;
 }
+footer{
+    display: flex;
+    bottom: 0;
+}
 
 @media (max-width: 600px) {
     .qback {
@@ -127,20 +132,25 @@
     }
 
     .typing-text {
-        font-size: 10px;
+        font-size: 28px;
         font-family: "Playwrite HR Lijeva", cursive;
         font-style: normal;
         font-weight: bold;
-        color: #333;
-        text-align: center;
+        color: white;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 40px;
+        letter-spacing: 2px;
         border-right: 3px solid;
-        white-space: wrap;
-        animation: none;
+        white-space: nowrap;
+        animation: marquee 10s linear infinite;
     }
-
+    @keyframes marquee {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
 
     .qback h1 {
         font-size: 20px;
