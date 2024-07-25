@@ -9,6 +9,7 @@ import { useNavigate, Navigate} from 'react-router-dom';
 function Home() {
   const [inputValue, setInputValue] = useState('');
   const nav= useNavigate();
+  // const [width, getWidth] = useState(window.innerWidth);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -24,6 +25,9 @@ function Home() {
    
     setInputValue('');
   };
+  // if(width<600){
+  // }
+  
   return (
     <div className='home'>
       <div className="sidebar">
@@ -32,14 +36,13 @@ function Home() {
       <div className="main">
       <div className='top'>
         <img src={Img} alt="logo" />
-        <h1>Welcome,<span> Rahul!</span></h1>
       </div>
       <div className='box'>
 
       </div>
 
     <div className="input">
-    <input
+    <input 
         type="text"
         value={inputValue}
         onChange={handleInputChange}
@@ -59,5 +62,6 @@ function Home() {
     </div>
   )
 }
+
 
 export default Home;

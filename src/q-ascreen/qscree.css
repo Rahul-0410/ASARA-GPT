@@ -31,6 +31,7 @@ footer p {
     width: 100%;
     margin-bottom: 2%;
     overflow: hidden;
+    height: 10%;
 }
 
 .typing-text {
@@ -129,31 +130,27 @@ footer{
     .qback {
         height: 100vh;
         width: 100%;
+        text-align: center;
+    }
+    .typing-container{
+        height: 8%;
+        text-align: center;
     }
 
     .typing-text {
-        font-size: 28px;
+        font-size: 20px;
         font-family: "Playwrite HR Lijeva", cursive;
-        font-style: normal;
         font-weight: bold;
         color: white;
-        text-transform: uppercase;
         letter-spacing: 2px;
         border-right: 3px solid;
         white-space: nowrap;
-        animation: marquee 10s linear infinite;
     }
-    @keyframes marquee {
-        from {
-            transform: translateX(100%);
-        }
-        to {
-            transform: translateX(-100%);
-        }
+    .typing-text h1{
+        text-align: center;
     }
 
     .qback h1 {
-        font-size: 20px;
         margin-bottom: 20px;
     }
 

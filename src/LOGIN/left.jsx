@@ -59,7 +59,6 @@ function Left() {
     return (
         <div className="left-container">
             <img src={logoImage} width="600px" alt="Logo" />
-            <h4 className="line"><b>LOGIN USING GOOGLE</b></h4>
             <GoogleLogin
                 onSuccess={credentialResponse => {
                     console.log(credentialResponse);
@@ -69,6 +68,7 @@ function Left() {
                     console.log('Login Failed');
                 }}
             />
+            <h4 className="line"><b>----------OR----------</b></h4>
 
             <form className="left-login-form" onSubmit={handleLogin}>
                 <input

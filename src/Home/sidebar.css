@@ -46,124 +46,25 @@
   color: #fff;
   cursor: pointer;
 }
-
-@media (max-width: 1280px) {
-  .Rightpanel img {
-    width: 45%;
-    height: 30%;
-    margin-top: 3px;
-    margin-bottom: 10px;
-  }
-
-  .Rightpanel h1 {
-    font-size: 20px;
-    margin-bottom: 2px;
-  }
-  .Rightpanel button {
-    padding: 8px 14px;
-    background-color: #2e8bc0;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease,
-      box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .Rightpanel p {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .Rightpanel img {
-    width: 40%;
-    height: 25%;
-    margin-top: 3px;
-    margin-bottom: 10px;
-  }
-
-  .Rightpanel h1 {
-    font-size: 20px;
-    margin-bottom: 2px;
-  }
-  .Rightpanel button {
-    padding: 8px 14px;
-    background-color: #2e8bc0;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease,
-      box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .Rightpanel p {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .Rightpanel img {
-    width: 14%;
-    height: 5%;
-    margin-top: 2px;
-    margin-bottom: 3px;
-  }
-
-  .Rightpanel h1 {
-    font-size: 18px;
-    margin-bottom: 0px;
-  }
-  .Rightpanel p {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 600px) {
-  .Rightpanel img {
-    width: 30%;
-    margin-top: 3px;
-    margin-bottom: 8px;
-    height: 11%;
-  }
-  .Rightpanel p {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .Rightpanel img {
-    width: 17%;
-    height: 10%;
-  }
-
-  .Rightpanel h1 {
-    font-size: 18px;
-  }
-
-  .Rightpanel button {
-    padding: 5px 13px;
-    font-size: 12px;
-  }
-  .Rightpanel p {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 320px) {
+@media(max-width:600px) {
   .sidebar {
-    width: 60px;
-    height: 118vh;
+    width: 25px; 
   }
+
+  .sidebar .logo img {
+    width: 25px; 
+  }
+
   .sidebar section .item svg {
-    height: 30px;
-    width: 30px;
+    width: 25px; 
+    height: 25px; 
+    margin-top: 20px; 
   }
+
   .sidebar .logout svg {
-    height: 30px;
-    width: 30px;
+    width: 25px; 
+    height: 25px; 
   }
 }
+
+

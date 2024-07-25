@@ -45,6 +45,8 @@
 
 .line{
     color: #257BA0;
+    margin-top: 5px;
+    
 }
 .google {
     width: 150px; /* Adjust button width */
