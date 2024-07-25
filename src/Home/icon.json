@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Questionnaire",
+        "icon": "fluent-mdl2:survey-questions"
+        
+    },
+    {
+        "title": "Profile",
+        "icon": "iconamoon:profile-circle-light"
+       
+    },
+    {
+        "title": "Interactive",
+        "icon": "dashicons:media-interactive"
+    }
+]

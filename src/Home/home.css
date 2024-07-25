@@ -1,0 +1,218 @@
+.home{
+    background-color: #343539;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main{
+    margin-left: 90px;
+}
+.top{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top img{
+    margin-left: 100px;
+    width: 300px;
+    height: 80px;
+}
+.top h1{
+    margin-left: 545px;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 26px;
+    color: white;
+}
+
+.top h1 span{
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.box{
+    width: 90%;
+    height: 500px;
+    background-color: #F2EFE4;
+    border-radius: 20px;
+    margin-left: 90px;
+    margin-top: 50px;
+}
+
+.input{
+    margin-left: 170px;
+    margin-top: 60px;
+    display: flex;
+    background-color: #F2EFE4;
+    border-radius: 50px;
+    width: 70%;
+}
+
+.input svg{
+    width: 40px;
+    height: 34px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+input{
+    background-color: #F2EFE4;
+    width: 70%;
+    height: 50px;
+    border: none;
+    margin-left: 90px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.mic{
+    margin-left: 40px;
+}
+
+@media (max-width: 1280px) {
+    .Rightpanel img {
+        width: 45%;
+        height: 30%;
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+    .Rightpanel button {
+        padding: 8px 14px;
+        background-color: #2E8BC0;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .Rightpanel p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .Rightpanel img {
+        width: 40%;
+        height: 25%;
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+    .Rightpanel button {
+        padding: 8px 14px;
+        background-color: #2E8BC0;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .Rightpanel p {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .Rightpanel img {
+        width: 14%;
+        height: 5%;
+        margin-top: 2px;
+    margin-bottom: 3px;
+    }
+
+    .Rightpanel h1 {
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+    .Rightpanel p{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Rightpanel img {
+        width: 30%;
+        margin-top: 3px;
+        margin-bottom: 8px;
+        height: 11%;
+    }
+    .Rightpanel p{
+        font-size: 11px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .Rightpanel img {
+        width: 17%;
+        height: 10%;
+    }
+
+    .Rightpanel h1 {
+        font-size: 18px;
+    }
+
+    .Rightpanel button {
+        padding: 5px 13px;
+        font-size: 12px;
+    }
+    .Rightpanel p{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 320px) {
+   .main{
+    margin-left: 30px;
+   }
+   .top{
+    margin-top: 10px;
+    flex-direction: column;
+   }
+   .top img{
+    width: 100px;
+    height: 30px;
+    margin-left: 50px;
+   }
+
+   .top h1{
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: 200;
+    font-size: 16px;
+   }
+   .top h1 span{
+    font-weight: 400px;
+    font-size: 20px;
+   }
+   .box{
+    width: 50%;
+    height: 200px;
+    margin-left: 30px;
+    margin-top: 30px;
+   }
+   .input{
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 30%;
+   }
+}

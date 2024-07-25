@@ -5,6 +5,8 @@ import './App'
 import SignUp from './SignUp/SignUp';
 import { AuthProvider } from './AuthContext.jsx';
 import Questions from './q-ascreen/qscreen.jsx';
+
+import Home from './Home/home.jsx';
 function App() {
   return (
     <AuthProvider>
@@ -12,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp/>} />
-        <Route path="/home" element={<h1>Home</h1>} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/questions" element={<Questions />} />
         {/* Add more routes as needed */}
         {/* <Route path="/calculator" element={<Calculator />} /> */}
