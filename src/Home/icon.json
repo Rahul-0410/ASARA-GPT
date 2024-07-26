@@ -5,11 +5,6 @@
         
     },
     {
-        "title": "Profile",
-        "icon": "iconamoon:profile-circle-light"
-       
-    },
-    {
         "title": "Interactive",
         "icon": "dashicons:media-interactive"
     }

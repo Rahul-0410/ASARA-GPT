@@ -14,8 +14,13 @@
   justify-content: center;
 }
 
-.sidebar .logo img {
-  width: 40px;
+.sidebar .logo svg {
+  width: 45px;
+  height: 45px;
+ cursor: pointer;
+  margin-top: 10px;
+
+
 }
 
 .sidebar section {
