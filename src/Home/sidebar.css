@@ -53,7 +53,7 @@
 }
 @media(max-width:600px) {
   .sidebar {
-    width: 25px; 
+    width: 40px; 
   }
 
   .sidebar .logo img {

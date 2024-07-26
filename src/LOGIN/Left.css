@@ -44,15 +44,18 @@
 }
 
 .line{
-    color: #257BA0;
-    margin-top: 5px;
+    color: blue;
+    margin-top: 10px;
     
 }
+.line b{
+    color: black;
+}
 .google {
-    width: 150px; /* Adjust button width */
-    height: 40px; /* Adjust button height */
+    width: 150px; 
+    height: 40px;
     background-size: cover;
     border: none;
     cursor: pointer;
-    margin-bottom: 20px; /* Adjust spacing below the button */
+    margin-bottom: 20px; 
 }

@@ -16,7 +16,7 @@ function Home() {
   };
   const { isLoggedIn } = useContext(AuthContext);
   if (!isLoggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
 }
 
   const handleSendClick = () => {

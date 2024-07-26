@@ -16,7 +16,7 @@ function Right() {
         e.preventDefault();
         if (validateData()) {
             const user = await SignupUser(userData);
-            navigate("/");
+            navigate("/login");
         }
     }
 

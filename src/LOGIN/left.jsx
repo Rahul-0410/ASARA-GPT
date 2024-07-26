@@ -68,7 +68,7 @@ function Left() {
                     console.log('Login Failed');
                 }}
             />
-            <h4 className="line"><b>----------OR----------</b></h4>
+            <h4 className="line">----------<b>OR</b>----------</h4>
 
             <form className="left-login-form" onSubmit={handleLogin}>
                 <input

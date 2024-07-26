@@ -14,7 +14,7 @@ const Questions = () => {
     const nav=useNavigate()
 
     if (!isLoggedIn) {
-        return <Navigate to="/" />;
+        return <Navigate to="/login" />;
     }else{
     const questions = [
         "Have You Any Anxiety From Previous or Past Experiences",

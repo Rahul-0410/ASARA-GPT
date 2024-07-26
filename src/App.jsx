@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Intro from './intro/Intro.jsx';
 import Login from './LOGIN/login';
 import './App'
 import SignUp from './SignUp/SignUp';
@@ -12,7 +13,8 @@ function App() {
     <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/questions" element={<Questions />} />

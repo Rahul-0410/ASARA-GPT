@@ -1,7 +1,7 @@
 import React from "react";
 import Left from "./left";
 import Right from "./right";
-import './login.css';  // Ensure the CSS file is correctly imported
+import './login.css';  
 
 function Login() {
     return (
