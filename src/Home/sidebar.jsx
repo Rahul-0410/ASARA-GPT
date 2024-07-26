@@ -2,7 +2,6 @@ import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import "./sidebar.css";
 import sideData from "./icon.json";
-import BrandLogo from "../assets/logo-color.png";
 import { useNavigate } from "react-router-dom";
 
 function SideBar() {
@@ -15,7 +14,10 @@ function SideBar() {
         }
 return (
     <aside className="sidebar">
-      <img src={BrandLogo} alt="logo" />
+      <div className="logo">
+
+      <Icon icon="iconamoon:profile-circle-light"  color={"#fff"}/>
+      </div>
       <section>
         {sideData.map((item, index) => (
           <article key={index} className="item" onClick={()=> handle(item)}>
