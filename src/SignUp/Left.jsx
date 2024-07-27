@@ -10,7 +10,7 @@ const Left = () => {
       <img src={Img} alt="Your description" />
       <h1> YOU ARE NOT ALONE</h1>
       <p>"You are not alone in the struggles of life. Entire cosmos is with you. It evolves through the way you face and overcome challenges of life. Use everything in your advantage."</p>
-      <button onClick={(e)=> naviagte("/")}>Login</button>
+      <button onClick={(e)=> naviagte("/login")}>Login</button>
     </div>
   );
 };
