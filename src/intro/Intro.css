@@ -1,4 +1,5 @@
 *{
+    
     scroll-behavior: smooth;
 }
 body {
@@ -14,6 +15,7 @@ body {
     border-bottom: 1px solid #eafafc;
     justify-content: right;
     height: 60px;
+    position: fixed;
 }
 
 .nav-logo {
@@ -149,7 +151,7 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-size: 300%;
-    font-style: italic;
+    
 }
 
 .feedback-form .form-group {
@@ -239,4 +241,85 @@ body {
     align-items: center;
     flex-direction: column;
     text-align: center;
+}
+@media(max-width:600px){
+.intro-nav{
+position: fixed;
+width: 100%;
+}
+.nav-logo{
+    height: 100%;
+    width:50%;
+}
+.nav-logo img{
+    height: 70%;
+}
+.intro-last{
+    display: flex;
+    flex-direction: column;
+}
+.feedback-form {
+    width: 100%;
+    margin-left:0% ;
+}
+.team-member{
+    margin-left: 0%;
+    margin-right: 0%;
+    width:300px;
+}
+.team-member p{
+    margin-top: 25px;
+    margin-left: 5px;
+    font-size: 12px;
+}
+.intro-mission p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: grey;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: justify;
+}
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.intro-context-text {
+    width: 100%;
+    margin-top: 30%;
+    margin-left: 0%;
+    margin-right: 0%;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.intro-context-text button{
+    height: 30px;
+    width: 40%;
+}
+.intro-content-image {
+    width: 100%;
+    margin-top: 7%;
+    margin-right: 5%;
+    border-radius: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.intro-content-image img{
+    width: 100%;
+}
+.team-member img:hover{
+    transform: scale(2.5);
+}
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50%;
+    text-wrap: nowrap;
+}
 }

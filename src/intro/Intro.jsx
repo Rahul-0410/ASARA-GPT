@@ -9,6 +9,7 @@ import rahulImg from "../assets/rahul.jpeg"
 import hamzaImg from "../assets/hamza.jpeg"
 import chiragImg from "../assets/chirag.jpeg" 
 function Intro() {
+
     const navigate = useNavigate();
     return (
         <>
@@ -24,7 +25,7 @@ function Intro() {
         </nav>
         <div className="intro-content">
             <div className="intro-context-text">
-            <h1><b>ASARA-GPT</b></h1>
+            <h1><b>AASRA-GPT</b></h1>
             <p>Welcome to Aasra GPT, your AI-powered mental health companion designed to support you through 
 life's challenges. At Aasra GPT, we are committed to providing a compassionate and innovative 
 approach to mental health support, focusing on helping individuals experiencing depression and 
@@ -62,11 +63,7 @@ mental health care more accessible, affordable, and effective for everyone.
                     <img src={rahulImg} alt="Rahul" />
                     <p>Rahul<br/>(Web Developer)<br/>rgs786999@gmail.com</p>
                 </div>
-                <div className="team-member">
-                    <img src={hamzaImg} alt="Hamza" />
-                    <p>Hamza<br/>(AI/ML)<br/>mohdhamzarehman@gmail.com</p>
-                </div>
-            </div>
+            </div> 
         <div id="feedback" className="feedback-form">
             <h2><b>Feedback_form</b></h2>
             <form action="https://api.web3forms.com/submit" method="post">
