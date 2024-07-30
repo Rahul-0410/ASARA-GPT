@@ -43,7 +43,6 @@ function Home() {
   const handleMicClick = () => {
     if (isRecording) {
       stopListening();
-      resetTranscript();
       setIsRecording(false);
     } else {
       startListening();
@@ -65,11 +64,17 @@ function Home() {
           <input 
             type="text"
             value={inputValue}
+            onKeyDown={(e) => { 
+              if (e.key === "Enter") { 
+                  alert("Enter")
+              } 
+          }} 
             onChange={handleInputChange}
             placeholder="Message Aasara-GPT"
             className="input-field"
           />
-          <Icon icon="material-symbols:send" onClick={handleSendClick} />
+          <Icon icon="material-symbols:send" onClick={handleSendClick}
+           />
           <Icon 
             icon="material-symbols:mic-outline" 
             className='mic' 
