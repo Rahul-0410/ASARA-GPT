@@ -70,7 +70,7 @@ function Home() {
               } 
           }} 
             onChange={handleInputChange}
-            placeholder="Message Aasara-GPT"
+            placeholder="Message Aasra-GPT"
             className="input-field"
           />
           <Icon icon="material-symbols:send" onClick={handleSendClick}
