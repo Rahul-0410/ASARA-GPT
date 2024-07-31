@@ -3,7 +3,7 @@
   height: 100vh;
   width: 85px;
   padding: 10px 0;
-  background-color: #3c3d43;
+  background-color: #171717;
   align-items: flex-start;
   grid-template-rows: 240px auto 85px;
 }

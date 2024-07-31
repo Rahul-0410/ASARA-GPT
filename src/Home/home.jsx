@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './home.css';
-import Img from "../assets/logo-no-background.png";
+import Img from "../assets/white-logo-nobackground.png";
 import SideBar from './sidebar';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { AuthContext } from '../AuthContext';
@@ -79,7 +79,7 @@ function Home() {
             icon="material-symbols:mic-outline" 
             className='mic' 
             onClick={handleMicClick} 
-            style={{ color: isRecording ? 'red' : 'black' }}
+            style={{ color: isRecording ? 'red' : 'white' }}
           />
         </div>
       </div>
