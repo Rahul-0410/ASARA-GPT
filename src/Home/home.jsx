@@ -8,6 +8,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Chat } from '../api/Auth-util';
+import { getChat } from '../api/Auth-util';
 
 function Home() {
   const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
@@ -18,7 +19,21 @@ function Home() {
   const { isLoggedIn } = useContext(AuthContext);
   const startListening = () => SpeechRecognition.startListening({ continuous: true });
   const stopListening = () => SpeechRecognition.stopListening();
+  const [chats, setChats] = useState('');
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const call = await getChat();
+      setChats(call);
+    }, 1000); 
+  
+
+    return () => clearInterval(interval);
+  }, []); 
+  
+  
+  
+  
   const {
     transcript,
     resetTranscript,
@@ -35,8 +50,20 @@ function Home() {
   };
 
   const handleSendClick =async () => {
-    console.log('Input value:', inputValue);
-    const result = await model.generateContent(inputValue);
+    const previousChats = chats.slice(-2);
+    console.log(previousChats)
+    const prompt = `
+      Previous conversation with you:
+      1. "${JSON.stringify(previousChats[0])}"
+      2. "${JSON.stringify(previousChats[1])}"
+
+      User's current question: "${inputValue}"
+
+      Please provide a thoughtful and compassionate response, considering both the previous conversation and the user's current input, to address their mental health concerns.
+      and give very small responses take ii as interactive chat and respnse like human
+      `;
+    console.log('Input value:', prompt);
+    const result = await model.generateContent(prompt);
     console.log(result.response.text());
     Chat({question:inputValue,answer:result.response.text()});
     setInputValue('');

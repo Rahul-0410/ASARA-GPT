@@ -9,6 +9,7 @@ const setUser = (user) => {
     localStorage.setItem("id", JSON.stringify(user));
 }
 
+
 const loginUserFunction = async ({email, password}) => {
     const user = await logInUser({email, password});
     setUser(user._id);
@@ -48,11 +49,19 @@ const Chat=async(Data) => {
     const user = await AsraApiBackend.post(`/user/chat`,data);
     console.log(user)
 }
+const getChat = async function() {
+    const id=getLocalStorageUser();
+    const user = await AsraApiBackend.get(`/user/${id}/getchat`);
+   
+    return user.data;
+}
 export { 
     loginUserFunction as loginUser,
     SignupUser,
     GoogleloginUser,
     getLocalStorageUser,
     questionsanssave,
-    Chat
+    Chat,
+    getChat
+ 
 };

@@ -90,6 +90,17 @@ const chatai=async(id,question,answer)=>{
         throw new InputValidationException(error.message)
     }
 }
+const getchat=async function(id){
+    const user = await User.findById(id)
+    try{
+        return user.chats;
+    }
+    catch(error){
+        console.error(error)
+        throw new InputValidationException(error.message)
+    }
+
+}
 
 module.exports = {
     addNewUser,
@@ -97,5 +108,5 @@ module.exports = {
     googleloginUser,
     addMentalHealthQuestionnaire,
     updateMentalHealthQuestionnaire,
-    chatai
+    chatai,getchat
 };

@@ -76,6 +76,16 @@ const Chatai=async(req,res)=>{
         return res.status(500).send({ message: error.message });
     }
 }
+const Getchat = async(req, res) => {
+try{
+const id=req.params.id;
+    const user = await UserService.getchat(id);
+    return res.status(200).send(user);
+}
+catch(error){
+    console.error(error);
+    return res.status(500).send({ message: error.message });
+}
+}
 
-
-module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire,Chatai}
+module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire,Chatai,Getchat };
