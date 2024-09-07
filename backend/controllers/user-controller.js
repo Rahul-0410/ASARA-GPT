@@ -65,7 +65,17 @@ const updateMentalHealthQuestionnaire = async(req, res) => {
             .send({ message: error.message });
     }
 }
+const Chatai=async(req,res)=>{
+    try{
+        const {id,question,answer}=req.body;
+        const user = await UserService.chatai(id,question,answer);
+        return res.status(200).send(user.chats);
+    }
+    catch(error){
+        console.error(error);
+        return res.status(500).send({ message: error.message });
+    }
+}
 
 
-
-module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire}
+module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire,Chatai}

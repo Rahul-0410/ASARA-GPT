@@ -43,7 +43,16 @@ const userSchema = new Schema({
     mentalHealthInfo: {
         type: Object,
         default: {}
-    }
+    },
+    chats:{ type:[
+        {
+            question: { type: String },
+            airesponse: { type: String }
+        }
+    ],
+    default: []
+}
+    
 },
 { timestamps: true }
 );

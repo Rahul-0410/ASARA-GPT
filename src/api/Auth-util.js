@@ -36,10 +36,23 @@ const questionsanssave=async (Data) => {
     const user = await AsraApiBackend.post(`/user/${id}/mental-health-questionnaire`,{Data});
     console.log(user)
 }
+const Chat=async(Data) => {
+    const id=getLocalStorageUser();
+    console.log(Data);
+    const data={
+        id,
+        question:Data.question,
+        answer:Data.answer
+    }
+    console.log(id)
+    const user = await AsraApiBackend.post(`/user/chat`,data);
+    console.log(user)
+}
 export { 
     loginUserFunction as loginUser,
     SignupUser,
     GoogleloginUser,
     getLocalStorageUser,
     questionsanssave,
+    Chat
 };

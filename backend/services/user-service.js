@@ -43,7 +43,7 @@ const googleloginUser = async (email) => {
 const addMentalHealthQuestionnaire = async (userId, answers) => {
     try {
         console.log(`Adding mental health questionnaire for user ID: ${userId}`);
-        console.log('Received answers:', answers);  // Add this line
+        console.log('Received answers:', answers);  
         const user = await User.findByIdAndUpdate(
             userId,
             { $set: { mentalHealthInfo: answers } },
@@ -80,11 +80,22 @@ const updateMentalHealthQuestionnaire = async (userId, answers) => {
         throw new InputValidationException(error.message);
     }
 }
+const chatai=async(id,question,answer)=>{
+    try{
+        const user=await User.findByIdAndUpdate(id,{$push:{chats:{question,airesponse:answer}}})
+        console.log(user)
+        return user
+    }catch(error){
+        console.error(error)
+        throw new InputValidationException(error.message)
+    }
+}
 
 module.exports = {
     addNewUser,
     loginUser,
     googleloginUser,
     addMentalHealthQuestionnaire,
-    updateMentalHealthQuestionnaire
+    updateMentalHealthQuestionnaire,
+    chatai
 };

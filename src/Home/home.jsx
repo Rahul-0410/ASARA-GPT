@@ -6,8 +6,12 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { AuthContext } from '../AuthContext';
 import { useNavigate, Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Chat } from '../api/Auth-util';
 
 function Home() {
+  const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const [inputValue, setInputValue] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const nav = useNavigate();
@@ -30,12 +34,11 @@ function Home() {
     setInputValue(event.target.value);
   };
 
-  if (!isLoggedIn) {
-    return <Navigate to="/login" />;
-  }
-
-  const handleSendClick = () => {
+  const handleSendClick =async () => {
     console.log('Input value:', inputValue);
+    const result = await model.generateContent(inputValue);
+    console.log(result.response.text());
+    Chat({question:inputValue,answer:result.response.text()});
     setInputValue('');
     resetTranscript();
   };
@@ -49,6 +52,9 @@ function Home() {
       setIsRecording(true);
     }
   };
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className='home'>
@@ -59,14 +65,17 @@ function Home() {
         <div className='top'>
           <img src={Img} alt="logo" />
         </div>
-        <div className='box'></div>
+        <div className='box'>
+
+          
+        </div>
         <div className="input">
           <input 
             type="text"
             value={inputValue}
             onKeyDown={(e) => { 
               if (e.key === "Enter") { 
-                  alert("Enter")
+                handleSendClick();
               } 
           }} 
             onChange={handleInputChange}
