@@ -11,6 +11,9 @@ function SideBar() {
       if (item.icon === "fluent-mdl2:survey-questions") {
         navigate("/questions");
       }
+      else{
+        navigate("/interactiveview");
+      }
     };
 
     const logout = () => {

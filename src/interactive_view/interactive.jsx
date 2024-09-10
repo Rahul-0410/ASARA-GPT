@@ -12,7 +12,6 @@ function Interactive() {
   const videoRef = useRef(null);
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
- 
   const [isRecording, setIsRecording] = useState(false);
   const [chats, setChats] = useState('');
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -30,7 +29,7 @@ function Interactive() {
     if (isRecording) {
       setPrompt(transcript);
     }
-  }, [transcript,isRecording]);
+  }, [transcript, isRecording]);
 
   const handleInputChange = (e) => {
     setPrompt(e.target.value);
@@ -52,34 +51,48 @@ function Interactive() {
     return result.response.text();
   };
 
-  const handleTextToSpeech = (text) => {
+  const handleTextToSpeech = async (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
-    
   
-    const voices = window.speechSynthesis.getVoices();
-    const femaleVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('female'));
-    if (femaleVoice) {
-      utterance.voice = femaleVoice;
+    const getVoices = () => new Promise((resolve) => {
+      if (speechSynthesis.getVoices().length) {
+        resolve(speechSynthesis.getVoices());
+      } else {
+        speechSynthesis.onvoiceschanged = () => resolve(speechSynthesis.getVoices());
+      }
+    });
+  
+    try {
+      const voices = await getVoices();
+      const femaleVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('female'));
+  
+      if (femaleVoice) {
+        utterance.voice = femaleVoice;
+      }
+  
+      speechSynthesis.speak(utterance);
+  
+      utterance.onend = () => {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      };
+  
+      videoRef.current.loop = true;
+      videoRef.current.play();
+    } catch (error) {
+      console.error('Error accessing voices or speaking:', error);
     }
-    
-    utterance.onend = () => {
-      videoRef.current.pause(); 
-       
-    };
-
-    speechSynthesis.speak(utterance);
-    videoRef.current.loop = true; 
-    videoRef.current.play(); 
-    
   };
+  
+  
 
   const handleSubmit = async () => {
     const apiResponse = await fetchResponse();
-    setResponse(apiResponse);
+    setResponse(apiResponse);   
 
     handleTextToSpeech(apiResponse); 
 
-    await Chat({ question: prompt, answer: response });
+    await Chat({ question: prompt, answer: apiResponse });
     setPrompt('');
     resetTranscript(); 
   };
