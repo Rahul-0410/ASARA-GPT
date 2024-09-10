@@ -8,6 +8,7 @@ import { AuthProvider } from './AuthContext.jsx';
 import Questions from './q-ascreen/qscreen.jsx';
 
 import Home from './Home/home.jsx';
+import Interactive from './interactive_view/interactive.jsx';
 function App() {
   return (
     <AuthProvider>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/questions" element={<Questions />} />
+        <Route path="/interactiveview" element={<Interactive />} />
         {/* Add more routes as needed */}
         {/* <Route path="/calculator" element={<Calculator />} /> */}
       </Routes>
