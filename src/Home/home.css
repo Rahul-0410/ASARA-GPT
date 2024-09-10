@@ -42,14 +42,22 @@
 }
 
 .box {
-    width: 80%;
+    width: 100%;
     height: 100%;
+    color: white;
     background-color: #212121;
-    outline: 1px solid white;
-    border-radius: 20px;
+    /* outline: 1px solid white; */
+    /* border-radius: 20px; */
     margin: 20px 0;
     display: flex;
+    overflow-y: scroll;
+    
 }
+.box::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
 
 .input {
     display: flex;
