@@ -4,18 +4,18 @@ import Img from "../assets/white-logo-nobackground.png";
 import SideBar from './sidebar';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { AuthContext } from '../AuthContext';
-import { useNavigate, Navigate } from 'react-router-dom';
+import {Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Chat, getChat } from '../api/Auth-util';
-import ChatComponent from '../Chat/Chat'; // We'll create this component next
+import ChatComponent from '../Chat/Chat'; 
 
 function Home() {
   const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const [inputValue, setInputValue] = useState('');
   const [isRecording, setIsRecording] = useState(false);
-  const nav = useNavigate();
+  // const nav = useNavigate();
   const { isLoggedIn } = useContext(AuthContext);
   const startListening = () => SpeechRecognition.startListening({ continuous: true });
   const stopListening = () => SpeechRecognition.stopListening();
