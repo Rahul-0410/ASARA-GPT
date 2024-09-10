@@ -6,7 +6,7 @@ import img2 from "../assets/ai-talkingbot.png"
 import img3 from "../assets/pic-person-nature.jpeg"
 import sanchitImg from "../assets/sanchit.jpeg" 
 import rahulImg from "../assets/rahul.jpeg"
-import hamzaImg from "../assets/hamza.jpeg"
+// import hamzaImg from "../assets/hamza.jpeg"
 import chiragImg from "../assets/chirag.jpeg" 
 function Intro() {
 
