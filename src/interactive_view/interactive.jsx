@@ -45,6 +45,7 @@ function Interactive() {
       Current question: "${prompt}"
 
       Provide a thoughtful response as an interactive chat, similar to a human conversation.
+      your name is aasragpt and avoid emojis and slang your response must be short.
     `;
     
     const result = await model.generateContent(promptWithContext);
@@ -52,37 +53,80 @@ function Interactive() {
   };
 
   const handleTextToSpeech = async (text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
+    const video = videoRef.current;
+    let voices = [];
   
-    const getVoices = () => new Promise((resolve) => {
-      if (speechSynthesis.getVoices().length) {
-        resolve(speechSynthesis.getVoices());
-      } else {
-        speechSynthesis.onvoiceschanged = () => resolve(speechSynthesis.getVoices());
-      }
-    });
+    // Helper function to get voices with a timeout for browser inconsistency
+    const getVoices = () => {
+      return new Promise((resolve) => {
+        let voices = speechSynthesis.getVoices();
+        if (voices.length > 0) {
+          resolve(voices);
+        } else {
+          // Wait for voices to be loaded
+          const interval = setInterval(() => {
+            voices = speechSynthesis.getVoices();
+            if (voices.length > 0) {
+              clearInterval(interval);
+              resolve(voices);
+            }
+          }, 200);
+        }
+      });
+    };
   
     try {
-      const voices = await getVoices();
-      const femaleVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('female'));
+      // Start video and loop it during speech
+      video.play();
+      video.loop = true;
   
-      if (femaleVoice) {
-        utterance.voice = femaleVoice;
-      }
+      // Fetch available voices with a small delay for loading
+      voices = await getVoices();
   
-      speechSynthesis.speak(utterance);
+      // Prefer female voice: "Microsoft Zira" (local) or fallback to "Microsoft Aria" (online)
+      const preferredVoice = voices.find(voice => 
+        voice.name === 'Microsoft Zira - English (United States)' || 
+        voice.name === 'Microsoft Aria Online (Natural) - English (United States)'
+      ) || voices[0]; // Fallback to any available voice
   
-      utterance.onend = () => {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+      // Create the utterance with the text
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.voice = preferredVoice;
+      msg.lang = 'en-US'; // Ensure the language is set
+  
+      // Handle when speech starts
+      msg.onstart = () => {
+        console.log('Speech started');
       };
   
-      videoRef.current.loop = true;
-      videoRef.current.play();
+      // Handle when speech ends
+      msg.onend = () => {
+        console.log('Speech ended');
+        video.pause();       // Pause the video after speaking
+        video.loop = false;  // Stop looping
+        video.currentTime = 0; // Reset video to the beginning
+      };
+  
+      // Handle errors in speech synthesis
+      msg.onerror = (event) => {
+        console.error('Speech synthesis error:', event);
+        video.pause();       // Pause video on error
+        video.loop = false;  // Stop looping
+        video.currentTime = 0; // Reset video to the beginning
+      };
+  
+      // Speak the utterance
+      speechSynthesis.speak(msg);
+  
     } catch (error) {
-      console.error('Error accessing voices or speaking:', error);
+      console.error('Error during text-to-speech:', error);
+      video.pause();       // Ensure video pauses in case of any error
+      video.loop = false;  // Stop looping
+      video.currentTime = 0; // Reset video to the beginning
     }
   };
+  
+  
   
   
 
