@@ -7,8 +7,8 @@ import { AuthContext } from '../AuthContext';
 import { useNavigate, Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { Chat } from '../api/Auth-util';
-import { getChat } from '../api/Auth-util';
+import { Chat, getChat } from '../api/Auth-util';
+import ChatComponent from '../Chat/Chat'; // We'll create this component next
 
 function Home() {
   const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
@@ -19,25 +19,25 @@ function Home() {
   const { isLoggedIn } = useContext(AuthContext);
   const startListening = () => SpeechRecognition.startListening({ continuous: true });
   const stopListening = () => SpeechRecognition.stopListening();
-  const [chats, setChats] = useState('');
+  const [chats, setChats] = useState([]);
 
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      const call = await getChat();
-      setChats(call);
-    }, 1000); 
-  
-
-    return () => clearInterval(interval);
-  }, []); 
-  
-  
-  
-  
   const {
     transcript,
     resetTranscript,
   } = useSpeechRecognition();
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      const fetchedChats = await getChat();
+      setChats(fetchedChats);
+    };
+    console.log(chats);
+    
+    fetchChats();
+    const interval = setInterval(fetchChats, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (isRecording) {
@@ -49,9 +49,10 @@ function Home() {
     setInputValue(event.target.value);
   };
 
-  const handleSendClick =async () => {
+  const handleSendClick = async () => {
+    if (!inputValue.trim()) return;
+
     const previousChats = chats.slice(-2);
-    console.log(previousChats)
     const prompt = `
       Previous conversation with you:
       1. "${JSON.stringify(previousChats[0])}"
@@ -60,14 +61,18 @@ function Home() {
       User's current question: "${inputValue}"
 
       Please provide a thoughtful and compassionate response, considering both the previous conversation and the user's current input, to address their mental health concerns.
-      and give very small responses take ii as interactive chat and respnse like human
-      `;
-    console.log('Input value:', prompt);
+      and give very small responses take it as interactive chat and respond like human
+    `;
+
     const result = await model.generateContent(prompt);
-    console.log(result.response.text());
-    Chat({question:inputValue,answer:result.response.text()});
+    const aiResponse = result.response.text();
+
+    await Chat({ question: inputValue, answer: aiResponse });
     setInputValue('');
     resetTranscript();
+
+    // Update local state immediately for a responsive UI
+    setChats(prevChats => [...prevChats, { question: inputValue, answer: aiResponse }]);
   };
 
   const handleMicClick = () => {
@@ -79,6 +84,7 @@ function Home() {
       setIsRecording(true);
     }
   };
+
   if (!isLoggedIn) {
     return <Navigate to="/login" />;
   }
@@ -93,8 +99,7 @@ function Home() {
           <img src={Img} alt="logo" />
         </div>
         <div className='box'>
-
-          
+          <ChatComponent chats={chats} />
         </div>
         <div className="input">
           <input 
@@ -104,13 +109,12 @@ function Home() {
               if (e.key === "Enter") { 
                 handleSendClick();
               } 
-          }} 
+            }} 
             onChange={handleInputChange}
             placeholder="Message Aasra-GPT"
             className="input-field"
           />
-          <Icon icon="material-symbols:send" onClick={handleSendClick}
-           />
+          <Icon icon="material-symbols:send" onClick={handleSendClick} />
           <Icon 
             icon="material-symbols:mic-outline" 
             className='mic' 
