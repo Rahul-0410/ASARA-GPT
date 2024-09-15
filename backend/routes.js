@@ -13,6 +13,7 @@ router.post("/googlelogin", userController.googleloginUser);
 router.post("/:userId/mental-health-questionnaire", userController.addMentalHealthQuestionnaire);
 router.post("/chat", userController.Chatai);
 router.get("/:id/getchat",userController.Getchat);
+router.post("/:userId/send", userController.sendMessage);
 router.get("/",(req,res)=>{
     res.send("hello");
 })
