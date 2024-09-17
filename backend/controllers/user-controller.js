@@ -1,5 +1,6 @@
 const UserService = require("../services/user-service")
 const InputValidationException = require("../exceptions/inputValidationException");
+const twilio = require('twilio');
 
 const addNewUser = async(req, res) => {
     try {
@@ -88,4 +89,42 @@ catch(error){
 }
 }
 
-module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,updateMentalHealthQuestionnaire,Chatai,Getchat };
+const sendMessage = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        // const phoneNumber = req.body.phoneNumber; // Assuming the phone number is sent in the request body
+
+        // Retrieve user information from the database
+        const user = await UserService.getUserById(userId);
+
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        }
+
+        // Construct the message with user information
+        const msg = `Hello ${user.username}, your email is ${user.email}. Your appointment is coming up with Rahul soon. Would you like to call him instead of meeting him in person?`;
+
+        // Initialize Twilio client
+        const accountSid = process.env.TWILIO_ACCOUNT_SID;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+        const client = twilio(accountSid, authToken);
+
+        // Send the message using Twilio
+        const message = await client.messages.create({
+            body: msg,
+            from: '+14808787901',
+            to: '+918427533412'
+        });
+
+        console.log(`Message sent with SID: ${message.sid}`);
+        res.status(200).send({ message: "Message sent successfully", messageSid: message.sid });
+    } catch (error) {
+        console.error(`Failed to send message. Error: ${error.message}`);
+        res.status(500).send({ message: "Failed to send message", error: error.message });
+    }
+};
+
+
+
+module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,
+    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage };

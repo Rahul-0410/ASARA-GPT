@@ -102,11 +102,25 @@ const getchat=async function(id){
 
 }
 
+const getUserById = async (userId) => {
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user;
+    } catch (error) {
+        console.error(`Failed to retrieve user. The error is ${error}`);
+        throw new InputValidationException(error.message);
+    }
+};
+
 module.exports = {
     addNewUser,
     loginUser,
     googleloginUser,
     addMentalHealthQuestionnaire,
     updateMentalHealthQuestionnaire,
-    chatai,getchat
+    chatai,getchat,
+    getUserById
 };
