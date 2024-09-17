@@ -4,10 +4,7 @@ import './Intro.css';
 import img from "../assets/logo-no-background.png"
 import img2 from "../assets/ai-talkingbot.png"
 import img3 from "../assets/pic-person-nature.jpeg"
-import sanchitImg from "../assets/sanchit.jpeg" 
-import rahulImg from "../assets/rahul.jpeg"
-// import hamzaImg from "../assets/hamza.jpeg"
-import chiragImg from "../assets/chirag.jpeg" 
+// import hamzaImg from "../assets/hamza.jpeg" 
 function Intro() {
 
     const navigate = useNavigate();
@@ -49,7 +46,7 @@ mental health care more accessible, affordable, and effective for everyone.
 <img src={img3} alt="nature" />
         </div>
         <div className="intro-last">
-            <div className="intro-ourteam">
+            {/* <div className="intro-ourteam">
             <h2>Our Team</h2>
                 <div className="team-member">
                     <img src={sanchitImg} alt="Sanchit Bajaj" />
@@ -63,7 +60,7 @@ mental health care more accessible, affordable, and effective for everyone.
                     <img src={rahulImg} alt="Rahul" />
                     <p>Rahul<br/>(Web Developer)<br/>rgs786999@gmail.com</p>
                 </div>
-            </div> 
+            </div>  */}
         <div id="feedback" className="feedback-form">
             <h2><b>Feedback_form</b></h2>
             <form action="https://api.web3forms.com/submit" method="post">
