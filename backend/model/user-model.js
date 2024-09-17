@@ -3,7 +3,7 @@ const { isEmail } = require("validator");
 const { checkPassword, encryptPassword } = require("../bcrypt");
 
 const userSchema = new Schema({
-    username: { type: String, trim: true},
+    username: { type: String, trim: true },
     email: {
         type: String, lowercase: true, trim: true, unique: true,
         validate: {
@@ -40,19 +40,21 @@ const userSchema = new Schema({
             }
         }
     },
+    phoneNumber: { type: String, trim: true },
+    city: { type: String, trim: true },
+    state: { type: String, trim: true },
+    country: { type: String, trim: true },
     mentalHealthInfo: {
         type: Object,
         default: {}
     },
-    chats:{ type:[
-        {
+    chats: { 
+        type: [{
             question: { type: String },
             airesponse: { type: String }
-        }
-    ],
-    default: []
-}
-    
+        }],
+        default: []
+    }
 },
 { timestamps: true }
 );

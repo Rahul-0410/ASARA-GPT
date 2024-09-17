@@ -72,6 +72,13 @@ const getprofile = async function() {
     
     return user.data;
 }
+
+const updateProfile = async (userData) => {
+    const id = getLocalStorageUser();
+    const response = await AsraApiBackend.put(`/user/${id}/updateProfile`, userData);
+    return response.data;
+  };
+
 export { 
     loginUserFunction as loginUser,
     SignupUser,
@@ -81,5 +88,6 @@ export {
     Chat,
     getChat,
     getQuestion,
-    getprofile
+    getprofile,
+    updateProfile
 };

@@ -121,7 +121,7 @@ const sendMessage = async (req, res) => {
 const SendQustion=async (req,res)=>{
     try{
         const id=req.params.userId;
-        console.log(id);
+        // console.log(id);
         const user = await UserService.sendQustion(id);
         return res.status(200).send(user);
     }
@@ -144,7 +144,20 @@ const profile=async(req,res)=>{
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const updatedData = req.body;
+      const user = await UserService.updateProfile(userId, updatedData);
+      return res.status(200).send(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(error instanceof InputValidationException ? 400 : 500)
+        .send({ message: error.message });
+    }
+  };
+
 
 
 module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,
-    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage,SendQustion,profile };
+    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage,SendQustion,profile, updateProfile };

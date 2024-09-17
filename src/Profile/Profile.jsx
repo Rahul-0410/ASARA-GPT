@@ -1,30 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css';
-
+import { getprofile,updateProfile } from '../api/Auth-util';
+import { useNavigate } from 'react-router-dom';
 const UserProfileEdit = () => {
-  const [userData, setUserData] = useState({
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '123-456-7890',
-    city: 'New York',
-    state: 'NY',
-    country: 'USA'
-  });
+    const [userData, setUserData] = useState({
+        name: '',
+        email: '',
+        city: '',
+        state: '',
+        country: ''
+      });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Updated user data:', userData);
-    // Here you would typically send the data to your backend
-    alert('Profile updated successfully!');
-  };
+    
+      useEffect(() => {
+        const fetchUserProfile = async () => {
+          try {
+            const profileData = await getprofile();
+            setUserData({
+              name: profileData.username || '',
+              email: profileData.email || '',
+              city: profileData.city || '',
+              state: profileData.state || '',
+              country: profileData.country || ''
+            });
+          } catch (error) {
+            console.error('Error fetching user profile:', error);
+            // You might want to show an error message to the user here
+          }
+        };
+    
+        fetchUserProfile();
+      }, []);
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserData(prevData => ({
+          ...prevData,
+          [name]: value
+        }));
+      };
+      const navigate = useNavigate();
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await updateProfile(userData);
+          alert('Profile updated successfully!');
+            navigate('/home');
+        } catch (error) {
+          console.error('Error updating profile:', error);
+          alert('Failed to update profile. Please try again.');
+        }
+      };
 
   return (
     <div className="profile-edit-container">
@@ -52,18 +79,6 @@ const UserProfileEdit = () => {
             value={userData.email}
             readOnly
             className="read-only"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={userData.phone}
-            onChange={handleChange}
-            minLength={10}
           />
         </div>
 
