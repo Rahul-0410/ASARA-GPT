@@ -17,24 +17,27 @@ const Questions = () => {
         return <Navigate to="/login" />;
     }else{
     const questions = [
-        "Have You Any Anxiety From Previous or Past Experiences",
-        "Have You Some Stress from Your Past Experiences",
-        "Are You Happy in Your Life",
-        "Have You Some Kind of Experiences that When You think You got it into the Depression State",
-        "How often do you feel lonely?",
-        "How would you rate your overall energy level?",
-        "Do you have any physical health conditions that contribute to your mental well-being?",
-        "Have you sought any professional help for your mental health in the past?",
-        "Do you have difficulty concentrating on your work or daily tasks?"
+        "I feel sad/ empty",
+        "I am excessively tired or fatigued",
+        "I struggle in social situations and feel isolated",
+        "I get irritable with people and myself.",
+        "My sleep pattern is disturbed (too little or too much)",
+        "My appetite has changed or I have no appetite",
+        "I do not feel confident enough to do simple tasks",
+        "I can't concentrate on things very well",
+        "Poor memory / forgetfulness",
+        "I find it hard to talk about feelings",
+        "I feel guility for no reason"
     ];
 
     const handleNextQuestion = () => {
         setAnswers(prevAnswers => [
             ...prevAnswers,
-            { question: questions[currentQuestion], answer: parseInt(answer) }
+            { question: questions[currentQuestion], answer: answer }
         ]);
 
         setSlideIn(false);
+        console.log(answers);
         setTimeout(() => {
             if (currentQuestion === questions.length - 1) {
                 saveAnswers();
@@ -62,19 +65,41 @@ const Questions = () => {
     </div>
             <div className={`qbox ${slideIn ? 'slide-in' : 'slide-out'}`}>
                 <h1>{questions[currentQuestion]}</h1>
-                <input
-                    type="range"
-                    min="0"
-                    max="10"
-                    value={answer}
-                    onChange={(e) => setAnswer(e.target.value)}
-                />
-                <p>Your answer: {answer}</p>
-                <button onClick={handleNextQuestion}>Next</button>
+                <div className="options">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="never"
+                        checked={answer === "never"}
+                        onChange={() => setAnswer("never")}
+                    />
+                    <span> Never</span>
+                </label>
+                <label className="sometimes">
+                    <input
+                        type="checkbox"
+                        value="sometimes"
+                        checked={answer === "sometimes"}
+                        onChange={() => setAnswer("sometimes")}
+                    />
+                    <span>Sometimes</span> 
+                </label>
+                <label>
+                    <input
+                        type="checkbox"
+                        value="always"
+                        checked={answer === "always"}
+                        onChange={() => setAnswer("always")}
+                    />
+                    <span>Always</span> 
+                </label>
+                </div>
+                <button className="que-btn" onClick={handleNextQuestion}>Next</button>
+               
             </div>
             <footer style={{ color: 'red'}}>
-                    <p>© 2024 Asara GPT. All rights reserved.</p>
-                </footer>
+                    <p>© 2024 Asara GPT BY Rahul. All rights reserved.</p>
+                </footer> 
         </div>  
         </>
         
