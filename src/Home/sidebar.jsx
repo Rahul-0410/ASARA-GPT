@@ -26,7 +26,7 @@ function SideBar() {
     return (
       <aside className="sidebar">
         <div className="logo">
-          <Icon icon="iconamoon:profile-circle-light" color={"#fff"} />
+          <Icon onClick={()=>(navigate('/profile'))} icon="iconamoon:profile-circle-light" color={"#fff"} />
         </div>
         <section>
           {sideData.map((item, index) => (
