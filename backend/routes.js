@@ -17,5 +17,6 @@ router.post("/:userId/send", userController.sendMessage);
 router.get("/",(req,res)=>{
     res.send("hello");
 })
+router.get("/:userId/getQuestion", userController.SendQustion)
 // router.put("/:userId/mental-health-questionnaire", userController.updateMentalHealthQuestionnaire);
 module.exports = router;

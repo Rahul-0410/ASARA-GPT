@@ -4,10 +4,10 @@ import Img from "../assets/white-logo-nobackground.png";
 import SideBar from './sidebar';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { AuthContext } from '../AuthContext';
-import {Navigate } from 'react-router-dom';
+import {json, Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { Chat, getChat } from '../api/Auth-util';
+import { Chat, getChat,getQuestion } from '../api/Auth-util';
 import ChatComponent from '../Chat/Chat'; 
 
 function Home() {
@@ -20,8 +20,12 @@ function Home() {
   const startListening = () => SpeechRecognition.startListening({ continuous: true });
   const stopListening = () => SpeechRecognition.stopListening();
   const [chats, setChats] = useState([]);
-
-
+  const [questions,setQuestions]=useState([]);
+  const queue=async function(){
+    const question=await getQuestion();
+    setQuestions(question);
+  }
+  queue();
   const {
     transcript,
     resetTranscript,
@@ -55,6 +59,9 @@ function Home() {
 
     const previousChats = chats.slice(-2);
     const prompt = `
+    user mental state:
+    
+      "${JSON.stringify(questions)}"
       Previous conversation with you:
       1. "${JSON.stringify(previousChats[0])}"
       2. "${JSON.stringify(previousChats[1])}"

@@ -118,11 +118,20 @@ const sendMessage = async (req, res) => {
         res.status(500).send({ message: "Failed to send message", error: error.message });
     }
 };
-// const sendQustion=async (req,res)=>{
-
-// }
+const SendQustion=async (req,res)=>{
+    try{
+        const id=req.params.userId;
+        console.log(id);
+        const user = await UserService.sendQustion(id);
+        return res.status(200).send(user);
+    }
+    catch(error){
+        console.error(error);
+        return res.status(500).send({ message: error.message });
+    }
+}
 
 
 
 module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,
-    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage };
+    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage,SendQustion };
