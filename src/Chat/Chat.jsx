@@ -3,37 +3,16 @@ import './Chat.css';
 
 const ChatComponent = ({ chats }) => {
   const chatContainerRef = useRef(null);
-  const [isUserScrolling, setIsUserScrolling] = useState(false);
 
   const scrollToBottom = () => {
-    if (!isUserScrolling && chatContainerRef.current) {
+    if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const container = chatContainerRef.current;
-      if (container) {
-        setIsUserScrolling(container.scrollTop + container.clientHeight < container.scrollHeight);
-      }
-    };
-
-    const container = chatContainerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-    }
-
-  
     scrollToBottom();
-
-
-    return () => {
-      if (container) {
-        container.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, [chats, isUserScrolling]);
+  }, [chats]); 
 
   return (
     <div className="chat-container" ref={chatContainerRef} >

@@ -62,7 +62,8 @@ function Home() {
       User's current question: "${inputValue}"
 
       Please provide a thoughtful and compassionate response, considering both the previous conversation and the user's current input, to address their mental health concerns.
-      and give very small responses take it as interactive chat and respond like human
+      and give very small responses take it as interactive chat and respond like human your name is aasra gpt
+      You are an AI designed to assist users with mental health-related questions and concerns only. If a user asks a question that is not related to mental health, respond with: 'Please enter only mental health-related questions.' Do not answer any other types of queries like math, programming, or general knowledge.
     `;
 
     const result = await model.generateContent(prompt);
@@ -72,9 +73,8 @@ function Home() {
     setInputValue('');
     resetTranscript();
 
-    // Update local state immediately for a responsive UI
     setChats(prevChats => [...prevChats, { question: inputValue, answer: aiResponse }]);
-     // Trigger re-rendering with new chats list.); // Trigger re-rendering with new chats list.
+
   };
 
   const handleMicClick = () => {
