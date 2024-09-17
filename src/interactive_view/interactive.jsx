@@ -5,6 +5,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Chat } from '../api/Auth-util';
 import { getChat } from '../api/Auth-util';
 import { Icon } from '@iconify/react/dist/iconify.js'; 
+import toast, { Toaster } from 'react-hot-toast';
 
 function Interactive() {
   const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
@@ -15,6 +16,29 @@ function Interactive() {
   const [isRecording, setIsRecording] = useState(false);
   const [chats, setChats] = useState('');
   const { transcript, resetTranscript } = useSpeechRecognition();
+  const [isDesktop, setIsDesktop] = useState(true); // For checking device
+
+  // Check if the screen is desktop or mobile
+  useEffect(() => {
+    const checkScreenWidth = () => {
+      if (window.innerWidth < 768) { // 768px is a common breakpoint for mobile
+        setIsDesktop(false);
+        toast.error("This feature is only compatible on desktop devices.");
+      } else {
+        setIsDesktop(true);
+      }
+    };
+
+    checkScreenWidth(); // Initial check on component mount
+
+    // Add an event listener for window resizing
+    window.addEventListener("resize", checkScreenWidth);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener("resize", checkScreenWidth);
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -45,7 +69,7 @@ function Interactive() {
       Current question: "${prompt}"
 
       Provide a thoughtful response as an interactive chat, similar to a human conversation.
-      your name is aasragpt and avoid emojis and slang your response must be short.
+      Your name is aasragpt and avoid emojis and slang, your response must be short.
     `;
     
     const result = await model.generateContent(promptWithContext);
@@ -56,14 +80,12 @@ function Interactive() {
     const video = videoRef.current;
     let voices = [];
   
-    // Helper function to get voices with a timeout for browser inconsistency
     const getVoices = () => {
       return new Promise((resolve) => {
         let voices = speechSynthesis.getVoices();
         if (voices.length > 0) {
           resolve(voices);
         } else {
-          // Wait for voices to be loaded
           const interval = setInterval(() => {
             voices = speechSynthesis.getVoices();
             if (voices.length > 0) {
@@ -76,60 +98,48 @@ function Interactive() {
     };
   
     try {
-      // Start video and loop it during speech
       video.play();
       video.loop = true;
   
-      // Fetch available voices with a small delay for loading
       voices = await getVoices();
   
-      // Prefer female voice: "Microsoft Zira" (local) or fallback to "Microsoft Aria" (online)
       const preferredVoice = voices.find(voice => 
         voice.name === 'Microsoft Zira - English (United States)' || 
         voice.name === 'Microsoft Aria Online (Natural) - English (United States)'
-      ) || voices[0]; // Fallback to any available voice
+      ) || voices[0];
   
-      // Create the utterance with the text
       const msg = new SpeechSynthesisUtterance(text);
       msg.voice = preferredVoice;
-      msg.lang = 'en-US'; // Ensure the language is set
+      msg.lang = 'en-US';
   
-      // Handle when speech starts
       msg.onstart = () => {
         console.log('Speech started');
       };
   
-      // Handle when speech ends
       msg.onend = () => {
         console.log('Speech ended');
-        video.pause();       // Pause the video after speaking
-        video.loop = false;  // Stop looping
-        video.currentTime = 0; // Reset video to the beginning
+        video.pause();
+        video.loop = false;
+        video.currentTime = 0;
       };
   
-      // Handle errors in speech synthesis
       msg.onerror = (event) => {
         console.error('Speech synthesis error:', event);
-        video.pause();       // Pause video on error
-        video.loop = false;  // Stop looping
-        video.currentTime = 0; // Reset video to the beginning
+        video.pause();
+        video.loop = false;
+        video.currentTime = 0;
       };
   
-      // Speak the utterance
       speechSynthesis.speak(msg);
   
     } catch (error) {
       console.error('Error during text-to-speech:', error);
-      video.pause();       // Ensure video pauses in case of any error
-      video.loop = false;  // Stop looping
-      video.currentTime = 0; // Reset video to the beginning
+      video.pause();
+      video.loop = false;
+      video.currentTime = 0;
     }
   };
   
-  
-  
-  
-
   const handleSubmit = async () => {
     const apiResponse = await fetchResponse();
     setResponse(apiResponse);   
@@ -153,41 +163,47 @@ function Interactive() {
 
   return (
     <div className="interactive-container">
-      <div className="input-container">
-        
-        <input
-          type="text"
-          value={prompt}
-          onChange={handleInputChange}
-          placeholder="Ask me anything..."
-          className="prompt-input"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSubmit();
-            }
-          }}
-        />
-        <Icon
-          icon="material-symbols:mic-outline"
-          className="mic"
-          onClick={handleMicClick}
-          style={{ color: isRecording ? 'red' : 'white' }}
-        />
-      </div>
+      <Toaster />
+      {isDesktop ? (
+        <>
+          <div className="input-container">
+            <input
+              type="text"
+              value={prompt}
+              onChange={handleInputChange}
+              placeholder="Ask me anything..."
+              className="prompt-input"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
+            />
+            <Icon
+              icon="material-symbols:mic-outline"
+              className="mic"
+              onClick={handleMicClick}
+              style={{ color: isRecording ? 'red' : 'white' }}
+            />
+          </div>
 
-      <div className="video-container">
-        <video
-          ref={videoRef}
-          className="interactive-video"
-          muted={true}
-          width="100%"
-          height="100%"
-          style={{ objectFit: 'cover' }}
-        >
-          <source src="/Talking Photo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+          <div className="video-container">
+            <video
+              ref={videoRef}
+              className="interactive-video"
+              muted={true}
+              width="100%"
+              height="100%"
+              style={{ objectFit: 'cover' }}
+            >
+              <source src="/Talking Photo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </>
+      ) : (
+        <p>This feature is only available on desktop devices.</p>
+      )}
     </div>
   );
 }

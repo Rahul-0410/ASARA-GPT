@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import { getprofile,updateProfile } from '../api/Auth-util';
-import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 const UserProfileEdit = () => {
     const [userData, setUserData] = useState({
         name: '',
@@ -39,14 +39,14 @@ const UserProfileEdit = () => {
           [name]: value
         }));
       };
-      const navigate = useNavigate();
+ 
     
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
           await updateProfile(userData);
-          alert('Profile updated successfully!');
-            navigate('/home');
+          toast.success('Profile updated successfully!');
+            
         } catch (error) {
           console.error('Error updating profile:', error);
           alert('Failed to update profile. Please try again.');
@@ -55,6 +55,7 @@ const UserProfileEdit = () => {
 
   return (
     <div className="profile-edit-container">
+       <Toaster position="top-center" />
       <form onSubmit={handleSubmit} className="profile-edit-form">
         <h2>Edit Profile</h2>
         

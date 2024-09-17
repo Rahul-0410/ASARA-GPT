@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import logoImage from './images/logo-no-background.png';
-// import logoImage from '../assets/Aasra_logo.png';
 import './Left.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { loginUser, GoogleloginUser } from '../api/Auth-util';
 import { AuthContext } from '../AuthContext.jsx';
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+import { AiOutlineCheckCircle } from 'react-icons/ai'; // Import the tick icon
 
 function Left() {
     const [userData, setUserData] = useState({
@@ -17,19 +18,28 @@ function Left() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
         try {
             const response = await loginUser(userData);
             console.log('Login success:', response);
-            login();
-            if (response.mentalHealthInfo === undefined) {
-                navigate('/questions');
-            } else {
-                navigate('/home');
-            }
+            // Show success toast with a tick icon and trigger login after
+            toast.success(
+                <div>
+                    
+                    Login successful!
+                </div>,
+                { duration: 2000 }
+            );
+            setTimeout(() => {
+                login(); // Trigger login after showing the toast
+                if (response.mentalHealthInfo === undefined) {
+                    navigate('/questions');
+                } else {
+                    navigate('/home');
+                }
+            }, 2000); // Delay login by 2 seconds
         } catch (error) {
             console.error('Login failed:', error);
-            alert('INVALID CREDENTIAL');
+            toast.error('Invalid credentials');
         }
     };
 
@@ -45,22 +55,35 @@ function Left() {
         try {
             const response = await GoogleloginUser(credentialResponse.credential);
             console.log('Google login success:', response);
-            login();
-            if (response.data.mentalHealthInfo === undefined) {
-                navigate('/questions');
-            } else {
-                navigate('/home');
-            }
+            // Show success toast with a tick icon and trigger login after
+            toast.success(
+                <div>
+                    
+                    Google login successful!
+                </div>,
+                { duration: 2000 }
+            );
+            setTimeout(() => {
+                login(); // Trigger login after showing the toast
+                if (response.data.mentalHealthInfo === undefined) {
+                    navigate('/questions');
+                } else {
+                    navigate('/home');
+                }
+            }, 2000); // Delay login by 2 seconds
         } catch (error) {
             console.error('Google login failed:', error);
-            alert('GOOGLE LOGIN FAILED');
+            toast.error('Google login failed');
         }
     };
 
     return (
         <div className="left-container">
+            {/* Toast with position set to top-center */}
+            <Toaster position="top-center" />
+
             <img src={logoImage} width="600px" alt="Logo" />
-        
+
             <GoogleLogin 
                 onSuccess={credentialResponse => {
                     console.log(credentialResponse);
@@ -68,10 +91,10 @@ function Left() {
                 }}
                 onError={() => {
                     console.log('Login Failed');
+                    toast.error('Google login failed');
                 }}
             />
-            
-           
+
             <h4 className="line">----------<b>OR</b>----------</h4>
 
             <form className="left-login-form" onSubmit={handleLogin}>

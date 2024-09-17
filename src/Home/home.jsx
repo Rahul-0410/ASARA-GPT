@@ -21,11 +21,15 @@ function Home() {
   const stopListening = () => SpeechRecognition.stopListening();
   const [chats, setChats] = useState([]);
   const [questions,setQuestions]=useState([]);
-  const queue=async function(){
-    const question=await getQuestion();
-    setQuestions(question);
-  }
-  queue();
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const question = await getQuestion();
+      setQuestions(question);
+    };
+
+    fetchQuestions();
+  }, []); 
+  
   const {
     transcript,
     resetTranscript,
@@ -72,7 +76,7 @@ function Home() {
       and give very small responses take it as interactive chat and respond like human your name is aasra gpt
       You are an AI designed to assist users with mental health-related questions and concerns only. If a user asks a question that is not related to mental health, respond with: 'Please enter only mental health-related questions.' Do not answer any other types of queries like math, programming, or general knowledge.
     `;
-
+    console.log(prompt)
     const result = await model.generateContent(prompt);
     const aiResponse = result.response.text();
 
