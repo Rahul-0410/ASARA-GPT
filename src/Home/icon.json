@@ -7,5 +7,9 @@
     {
         "title": "Interactive",
         "icon": "dashicons:media-interactive"
+    },
+    {
+        "title": "Books",
+        "icon": "mdi:books"
     }
 ]
