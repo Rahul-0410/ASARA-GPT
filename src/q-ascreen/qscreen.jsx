@@ -61,7 +61,7 @@ const Questions = () => {
         <>
         <div className="qback">
      <div className="typing-container">
-        <h1 className="typing-text"><i>*Help our AI to know you by answering these questions!</i></h1>
+        <h1 className="typing-text"><i>*Help our AI to know about you by answering these questions!</i></h1>
     </div>
             <div className={`qbox ${slideIn ? 'slide-in' : 'slide-out'}`}>
                 <h1>{questions[currentQuestion]}</h1>
@@ -97,7 +97,7 @@ const Questions = () => {
                 <button className="que-btn" onClick={handleNextQuestion}>Next</button>
                
             </div>
-            <footer style={{ color: 'red'}}>
+            <footer style={{ color: 'black'}}>
                     <p>© 2024 Asara GPT BY Rahul. All rights reserved.</p>
                 </footer> 
         </div>  

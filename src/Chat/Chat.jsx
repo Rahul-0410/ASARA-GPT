@@ -15,7 +15,7 @@ const ChatComponent = ({ chats }) => {
   }, [chats]); 
 
   return (
-    <div className="chat-container" ref={chatContainerRef} style={{ overflowY: 'auto', maxHeight: '400px' }}>
+    <div className="chat-container" ref={chatContainerRef} >
       {chats.map((chat, index) => (
         <React.Fragment key={index}>
           {chat.question && (
