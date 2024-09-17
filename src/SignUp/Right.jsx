@@ -1,6 +1,6 @@
 import React from 'react'
-// import Img from '../assets/logo-no-background.png'
-import Img from '../assets/Aasra_logo.png'
+import Img from '../assets/logo-no-background.png'
+// import Img from '../assets/Aasra_logo.png'
 import { SignupUser } from '../api/Auth-util';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

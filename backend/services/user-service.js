@@ -115,6 +115,7 @@ const getUserById = async (userId) => {
     }
 };
 
+
 module.exports = {
     addNewUser,
     loginUser,

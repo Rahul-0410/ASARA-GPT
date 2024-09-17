@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-// import logoImage from './images/logo-no-background.png';
-import logoImage from '../assets/Aasra_logo.png';
+import logoImage from './images/logo-no-background.png';
+// import logoImage from '../assets/Aasra_logo.png';
 import './Left.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { loginUser, GoogleloginUser } from '../api/Auth-util';
