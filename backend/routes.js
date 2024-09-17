@@ -14,6 +14,8 @@ router.post("/:userId/mental-health-questionnaire", userController.addMentalHeal
 router.post("/chat", userController.Chatai);
 router.get("/:id/getchat",userController.Getchat);
 router.post("/:userId/send", userController.sendMessage);
+
+router.get("/:userId/getprofile",userController.profile)
 router.get("/",(req,res)=>{
     res.send("hello");
 })

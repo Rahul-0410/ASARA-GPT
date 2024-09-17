@@ -130,8 +130,21 @@ const SendQustion=async (req,res)=>{
         return res.status(500).send({ message: error.message });
     }
 }
+const profile=async(req,res)=>{
+    try{
+        const id=req.params.userId;
+        console.log(id);
+        const user = await UserService.Profile(id);
+        return res.status(200).send(user);
+
+    }
+    catch(error){
+        console.error(error);
+        return res.status(500).send({ message: error.message });
+    }
+}
 
 
 
 module.exports = { addNewUser, loginUser,googleloginUser, addMentalHealthQuestionnaire,
-    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage,SendQustion };
+    updateMentalHealthQuestionnaire,Chatai,Getchat, sendMessage,SendQustion,profile };

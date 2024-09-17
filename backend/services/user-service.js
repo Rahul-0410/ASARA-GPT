@@ -116,9 +116,8 @@ const getUserById = async (userId) => {
 };
 const sendQustion=async (id)=>{
     try{
-        console.log(id)
         const user = await User.findById(id);
-        console.log(user)
+        
         return user.mentalHealthInfo;
     }catch(error){
         console.error(error)
@@ -126,7 +125,16 @@ const sendQustion=async (id)=>{
     }
  
 }
-
+const Profile=async (id)=>{
+    try{
+        const user=await User.findById(id)
+        return user;
+    }
+    catch(error){
+        console.error(error)
+        throw new InputValidationException(error.message)
+    }
+}
 
 module.exports = {
     addNewUser,
@@ -136,5 +144,6 @@ module.exports = {
     updateMentalHealthQuestionnaire,
     chatai,getchat,
     getUserById,
-    sendQustion
+    sendQustion,
+    Profile
 };

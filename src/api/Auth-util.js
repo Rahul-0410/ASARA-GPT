@@ -66,6 +66,12 @@ const getQuestion = async function() {
     
     return user.data;
 }
+const getprofile = async function() {
+    const id=getLocalStorageUser();
+    const user = await AsraApiBackend.get(`/user/${id}/getprofile`);
+    
+    return user.data;
+}
 export { 
     loginUserFunction as loginUser,
     SignupUser,
@@ -74,5 +80,6 @@ export {
     questionsanssave,
     Chat,
     getChat,
-    getQuestion
+    getQuestion,
+    getprofile
 };
