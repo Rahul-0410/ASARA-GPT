@@ -16,6 +16,7 @@ router.get("/:id/getchat",userController.Getchat);
 router.post("/:userId/send", userController.sendMessage);
 
 router.get("/:userId/getprofile",userController.profile)
+router.put("/:userId/updateProfile", userController.updateProfile);
 router.get("/",(req,res)=>{
     res.send("hello");
 })

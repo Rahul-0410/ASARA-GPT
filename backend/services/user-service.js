@@ -136,6 +136,34 @@ const Profile=async (id)=>{
     }
 }
 
+const updateProfile = async (userId, updatedData) => {
+    try {
+      console.log(`Updating profile for user ID: ${userId}`);
+      const user = await User.findByIdAndUpdate(
+        userId,
+        {
+          $set: {
+            username: updatedData.name,
+            city: updatedData.city,
+            state: updatedData.state,
+            country: updatedData.country
+          }
+        },
+        { new: true, runValidators: true }
+      );
+  
+      if (!user) {
+        throw new Error('User not found');
+      }
+  
+      console.log(`Profile updated for user ID: ${userId}`);
+      return user;
+    } catch (error) {
+      console.error(`Failed to update profile. The error is ${error}`);
+      throw new InputValidationException(error.message);
+    }
+  };
+
 module.exports = {
     addNewUser,
     loginUser,
@@ -145,5 +173,6 @@ module.exports = {
     chatai,getchat,
     getUserById,
     sendQustion,
-    Profile
+    Profile,
+    updateProfile
 };
