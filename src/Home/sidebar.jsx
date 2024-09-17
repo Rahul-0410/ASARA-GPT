@@ -10,8 +10,10 @@ function SideBar() {
     const handle = (item) => {
       if (item.icon === "fluent-mdl2:survey-questions") {
         navigate("/questions");
-      }
-      else{
+            } else if(item.icon ==="mdi:books"){
+        window.open("http://localhost:3002/", "_blank");
+            }
+            else{
         navigate("/interactiveview");
       }
     };
