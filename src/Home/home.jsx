@@ -21,6 +21,7 @@ function Home() {
   const stopListening = () => SpeechRecognition.stopListening();
   const [chats, setChats] = useState([]);
 
+
   const {
     transcript,
     resetTranscript,
@@ -73,6 +74,7 @@ function Home() {
 
     // Update local state immediately for a responsive UI
     setChats(prevChats => [...prevChats, { question: inputValue, answer: aiResponse }]);
+     // Trigger re-rendering with new chats list.); // Trigger re-rendering with new chats list.
   };
 
   const handleMicClick = () => {
@@ -99,7 +101,7 @@ function Home() {
           <img src={Img} alt="logo" />
         </div>
         <div className='box'>
-          <ChatComponent chats={chats} />
+          <ChatComponent chats={chats}   />
         </div>
         <div className="input">
           <input 
