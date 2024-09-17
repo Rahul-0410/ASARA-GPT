@@ -9,6 +9,7 @@ import Questions from './q-ascreen/qscreen.jsx';
 
 import Home from './Home/home.jsx';
 import Interactive from './interactive_view/interactive.jsx';
+import UserProfileEdit from './Profile/Profile.jsx';
 function App() {
   return (
     <AuthProvider>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/home" element={<Home/>} />
         <Route path="/questions" element={<Questions />} />
         <Route path="/interactiveview" element={<Interactive />} />
+        <Route path='/profile' element={<UserProfileEdit/>}/>
         {/* Add more routes as needed */}
         {/* <Route path="/calculator" element={<Calculator />} /> */}
       </Routes>
