@@ -8,7 +8,7 @@
   border-radius: 10px;
 
   
-  max-height: 400px; /* Set a height to enable scrolling */
+  max-height: 500px; /* Set a height to enable scrolling */
   overflow-y: scroll; /* Enable vertical scroll */
   
 
