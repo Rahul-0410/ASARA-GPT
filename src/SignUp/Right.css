@@ -188,6 +188,7 @@
     }
     img{
         width: 180px;
+        margin-bottom: 15px;
     }
 
 
@@ -226,6 +227,7 @@
 
     .left-submit-button {
         font-size: 14px;
+        margin-bottom: 15px;
     }
 }
 

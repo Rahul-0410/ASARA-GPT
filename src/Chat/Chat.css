@@ -8,8 +8,8 @@
   border-radius: 10px;
 
   
-  max-height: 400px; /* Set a height to enable scrolling */
-  overflow-y: scroll; /* Enable vertical scroll */
+  max-height: 500px;
+  overflow-y: scroll;
   
 
   scrollbar-width: none;
@@ -17,7 +17,7 @@
 }
 
 .chat-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none; 
 }
 
 .chat-bubble {
@@ -37,4 +37,15 @@
 .chat-bubble-ai {
   align-self: flex-start;
   border-radius: 15px 15px 15px 0;
+}
+
+@media (300px <=width <=600px){
+  .chat-container {
+    max-width: 100%;
+  }
+
+  .chat-bubble{
+    max-width: 90%;
+    margin-top: 10px;
+  }
 }
