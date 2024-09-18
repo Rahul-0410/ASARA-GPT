@@ -11,7 +11,7 @@ function SideBar() {
       if (item.icon === "fluent-mdl2:survey-questions") {
         navigate("/questions");
             } else if(item.icon ==="mdi:books"){
-        window.open("http://localhost:3002/", "_blank");
+        window.open("https://full-stackproject.onrender.com/", "_blank");
             }
             else{
         navigate("/interactiveview");
