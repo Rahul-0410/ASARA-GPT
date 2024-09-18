@@ -11,7 +11,7 @@ import { Chat, getChat,getQuestion } from '../api/Auth-util';
 import ChatComponent from '../Chat/Chat'; 
 
 function Home() {
-  const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const [inputValue, setInputValue] = useState('');
   const [isRecording, setIsRecording] = useState(false);

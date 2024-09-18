@@ -6,7 +6,6 @@ import { loginUser, GoogleloginUser } from '../api/Auth-util';
 import { AuthContext } from '../AuthContext.jsx';
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
-import { AiOutlineCheckCircle } from 'react-icons/ai'; // Import the tick icon
 
 function Left() {
     const [userData, setUserData] = useState({
