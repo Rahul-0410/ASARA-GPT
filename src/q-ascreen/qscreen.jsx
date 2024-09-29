@@ -98,7 +98,7 @@ const Questions = () => {
                
             </div>
             <footer style={{ color: 'black'}}>
-                    <p>© 2024 Asara GPT BY Rahul. All rights reserved.</p>
+                    <p>© 2024 Asara GPT All rights reserved.</p>
                 </footer> 
         </div>  
         </>
