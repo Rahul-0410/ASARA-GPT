@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Interactive() {
-  const genAI = new GoogleGenerativeAI('AIzaSyA0fVZOqiiv4CZu2K4uZginsJt9K7VoeT8');
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const videoRef = useRef(null);
   const [prompt, setPrompt] = useState("");

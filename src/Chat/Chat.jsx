@@ -3,16 +3,22 @@ import './Chat.css';
 
 const ChatComponent = ({ chats }) => {
   const chatContainerRef = useRef(null);
+  const [containerHeight, setContainerHeight] = useState(0);
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight + 2; // Ensures the last chat is visible
     }
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [chats]); 
+    // Trigger scroll if the container height changes
+    const newHeight = chatContainerRef.current?.scrollHeight || 0;
+    if (newHeight > containerHeight) {
+      setContainerHeight(newHeight);
+      scrollToBottom();
+    }
+  }, [chats, containerHeight]);
 
   return (
     <div className="chat-container" ref={chatContainerRef} >

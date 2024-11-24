@@ -7,7 +7,7 @@ import { AuthContext } from '../AuthContext';
 import {json, Navigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { Chat, getChat,getQuestion } from '../api/Auth-util';
+import { Chat, getChat,getQuestion,getprofile } from '../api/Auth-util';
 import ChatComponent from '../Chat/Chat'; 
 
 function Home() {
@@ -21,6 +21,9 @@ function Home() {
   const stopListening = () => SpeechRecognition.stopListening();
   const [chats, setChats] = useState([]);
   const [questions,setQuestions]=useState([]);
+  const alet = (message) => {
+    alert(message);
+  }
   useEffect(() => {
     const fetchQuestions = async () => {
       const question = await getQuestion();
@@ -28,6 +31,7 @@ function Home() {
     };
 
     fetchQuestions();
+    alet("it take some time to get response from aasra gpt pls wait for a while after sending the message");
   }, []); 
   
   const {
@@ -60,6 +64,7 @@ function Home() {
 
   const handleSendClick = async () => {
     if (!inputValue.trim()) return;
+    const profile=await getprofile();
 
     const previousChats = chats.slice(-2);
     const prompt = `
@@ -75,6 +80,16 @@ function Home() {
       Please provide a thoughtful and compassionate response, considering both the previous conversation and the user's current input, to address their mental health concerns.
       and give very small responses take it as interactive chat and respond like human your name is aasra gpt
       You are an AI designed to assist users with mental health-related questions and concerns only. If a user asks a question that is not related to mental health, respond with: 'Please enter only mental health-related questions.' Do not answer any other types of queries like math, programming, or general knowledge.
+       and you will also get question ans of mental helath queries answered by user and will get his profile use them as needed but dont all depend on the question ans
+      User's profile:
+      "${JSON.stringify({
+        name: profile.username || '',
+        email: profile.email || '',
+        city: profile.city || '',
+        state: profile.state || '',
+        country: profile.country || ''
+      })}"
+      and dont add this Aasra GPT: response pattern 
     `;
     console.log(prompt)
     const result = await model.generateContent(prompt);
