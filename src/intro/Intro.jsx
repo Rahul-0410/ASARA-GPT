@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import sanchitImg from "../assets/sanchit.jpeg"
 import rahulImg from "../assets/rahul.jpeg"
 import img from "../assets/white-logo-nobackground.png"
 import img1 from "../assets/ai-talkingbot.png"
 import img2 from "../assets/beach.jpg"
+import { Menu, X } from "lucide-react";
 
 const Intro = () => {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToFeedback = (e) => {
+    e.preventDefault();
+    const feedbackSection = document.getElementById('feedback');
+    feedbackSection?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900">
@@ -16,18 +25,47 @@ const Intro = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <img src={`${img}`} alt="Logo" className="h-8" />
+              <img src={img} alt="Logo" className="h-8" />
             </div>
-            <div className="flex space-x-4">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-4">
               <NavLink href="/login">Login</NavLink>
               <NavLink href="/signup">Sign Up</NavLink>
-              <NavLink href="#feedback">Feedback</NavLink>
+              <NavLink href="#feedback" onClick={scrollToFeedback}>Feedback</NavLink>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
             </div>
           </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <MobileNavLink href="/login">Login</MobileNavLink>
+                <MobileNavLink href="/signup">Sign Up</MobileNavLink>
+                <MobileNavLink href="#feedback" onClick={scrollToFeedback}>
+                  Feedback
+                </MobileNavLink>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
-   
+      {/* Hero Section with Improved Mobile Image */}
       <section className="pt-24 pb-16 px-4 sm:pt-32 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -48,19 +86,19 @@ const Intro = () => {
                 Get Started
               </button>
             </div>
-            <div className="relative">
+            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-500 rounded-2xl blur-3xl opacity-20"></div>
               <img
-                src={`${img1}`}
+                src={img1}
                 alt="AI Talking Bot"
-                className="relative rounded-2xl shadow-2xl"
+                className="relative rounded-2xl shadow-2xl w-full h-auto object-cover sm:max-w-lg sm:mx-auto lg:max-w-none"
               />
             </div>
           </div>
         </div>
       </section>
 
-      
+      {/* Mission Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -74,7 +112,7 @@ const Intro = () => {
           <div className="relative mt-12">
             <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-500 rounded-3xl blur-3xl opacity-20"></div>
             <img
-              src={`${img2}`}
+              src={img2}
               alt="Nature"
               className="relative rounded-3xl shadow-2xl w-full object-cover"
             />
@@ -82,11 +120,11 @@ const Intro = () => {
         </div>
       </section>
 
-     
+      {/* Team and Feedback Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-         
+            {/* Team Section */}
             <div className="space-y-8">
               <h2 className="text-3xl font-bold text-white text-center mb-8">Our Team</h2>
               <div className="space-y-6">
@@ -94,18 +132,18 @@ const Intro = () => {
                   name="Sanchit Bajaj"
                   role="Web Developer"
                   email="Sanchitbajaj2003@gmail.com"
-                  imageSrc={`${sanchitImg}`}
+                  imageSrc={sanchitImg}
                 />
                 <TeamMember
                   name="Rahul"
                   role="Web Developer"
                   email="rgs786999@gmail.com"
-                  imageSrc={`${rahulImg}`}
+                  imageSrc={rahulImg}
                 />
               </div>
             </div>
 
-       
+            {/* Feedback Form */}
             <div id="feedback" className="bg-slate-800/50 rounded-2xl p-8">
               <h2 className="text-3xl font-bold text-white text-center mb-8">Feedback</h2>
               <form action="https://api.web3forms.com/submit" method="post" className="space-y-6">
@@ -136,7 +174,7 @@ const Intro = () => {
         </div>
       </section>
 
-  
+      {/* Footer */}
       <footer className="py-8 px-4 border-t border-slate-800">
         <div className="max-w-7xl mx-auto text-center text-slate-400">
           <p>© 2024 Asara GPT. All rights reserved.</p>
@@ -146,11 +184,23 @@ const Intro = () => {
   );
 };
 
-const NavLink = ({ href, children }) => (
+const NavLink = ({ href, children, onClick }) => (
   <a
     href={href}
+    onClick={onClick}
     className="text-slate-300 hover:text-white px-4 py-2 rounded-lg hover:bg-slate-800 
                transition-colors duration-200"
+  >
+    {children}
+  </a>
+);
+
+const MobileNavLink = ({ href, children, onClick }) => (
+  <a
+    href={href}
+    onClick={onClick}
+    className="block text-slate-300 hover:text-white px-3 py-2 rounded-md text-base font-medium
+               hover:bg-slate-800 transition-colors duration-200"
   >
     {children}
   </a>
