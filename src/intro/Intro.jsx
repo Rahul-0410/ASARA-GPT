@@ -1,92 +1,189 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import './Intro.css';
-import img from "../assets/logo-no-background.png"
-import img2 from "../assets/ai-talkingbot.png"
-import img3 from "../assets/pic-person-nature.jpeg"
-// import hamzaImg from "../assets/hamza.jpeg" 
-function Intro() {
+import sanchitImg from "../assets/sanchit.jpeg"
+import rahulImg from "../assets/rahul.jpeg"
+import img from "../assets/white-logo-nobackground.png"
+import img1 from "../assets/ai-talkingbot.png"
+import img2 from "../assets/beach.jpg"
 
-    const navigate = useNavigate();
-    return (
-        <>
-        <nav className="intro-nav">
-            <div className="nav-logo">
-                <img src={img} alt="" />
+const Intro = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex-shrink-0">
+              <img src={`${img}`} alt="Logo" className="h-8" />
             </div>
-            <div className="nav-links">
-            <a href="/login">Login</a>
-            <a href="/signup">Sign Up</a>
-            <a href="#feedback">Feedback</a>
+            <div className="flex space-x-4">
+              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/signup">Sign Up</NavLink>
+              <NavLink href="#feedback">Feedback</NavLink>
             </div>
-        </nav>
-        <div className="intro-content">
-            <div className="intro-context-text">
-            <h1><b>AASRA-GPT</b></h1>
-            <p>Welcome to Aasra GPT, your AI-powered mental health companion designed to support you through 
-life's challenges. At Aasra GPT, we are committed to providing a compassionate and innovative 
-approach to mental health support, focusing on helping individuals experiencing depression and 
-anxiety to find happiness and healing. </p>
-            <button onClick={() => navigate('/home')}>Get Started</button>
-            </div>
-            <div className="intro-content-image">
-                <img src={img2} alt="" />
-            </div>
+          </div>
         </div>
-        <div className="intro-mission">
-            <h1><b>OUR MISSION</b></h1>
-            <p><b>Our mission is to leverage advanced AI technology to offer accessible, personalized mental health 
-support. We aim to create a safe and supportive environment where users can explore their feelings, 
-receive guidance, and develop coping strategies to improve their mental well-being. </b><br/>
-We envision a world where mental health support is readily available and stigma-free. By harnessing 
-the power of AI, we strive to make a positive impact on society, helping individuals lead happier and 
-healthier lives. Our ultimate goal is to integrate AI support seamlessly into everyday life, making 
-mental health care more accessible, affordable, and effective for everyone. 
-</p>
-<img src={img3} alt="nature" />
-        </div>
-        <div className="intro-last">
-            {/* <div className="intro-ourteam">
-            <h2>Our Team</h2>
-                <div className="team-member">
-                    <img src={sanchitImg} alt="Sanchit Bajaj" />
-                    <p>Sanchit Bajaj<br/>(Web Developer)<br/>Sanchitbajaj2003@gmail.com</p>
-                </div>
-                <div className="team-member">
-                    <img src={chiragImg} alt="Chirag Gaba" />
-                    <p>Chirag Gaba<br/>(AI/ML)<br/>chiraggaba064@gmail.com</p>
-                </div>
-                <div className="team-member">
-                    <img src={rahulImg} alt="Rahul" />
-                    <p>Rahul<br/>(Web Developer)<br/>rgs786999@gmail.com</p>
-                </div>
-            </div>  */}
-        <div id="feedback" className="feedback-form">
-            <h2><b>Feedback_form</b></h2>
-            <form action="https://api.web3forms.com/submit" method="post">
-                <div className="form-group">
-                <input type="hidden" name="access_key" value="1a562657-bc02-4007-bc9a-c4ada2a53918"/>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="feedback">Feedback:</label>
-                    <textarea id="feedback" name="feedback" rows="4" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        </div>
-                    <div className="intro-footer">
-                <p>© 2024 Asara GPT. All rights reserved.</p>
+      </nav>
+
+   
+      <section className="pt-24 pb-16 px-4 sm:pt-32 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-5xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                AASRA-GPT
+              </h1>
+              <p className="text-slate-400 text-lg leading-relaxed">
+                Welcome to Aasra GPT, your AI-powered mental health companion designed to support you through 
+                life's challenges. At Aasra GPT, we are committed to providing a compassionate and innovative 
+                approach to mental health support.
+              </p>
+              <button
+                onClick={() => navigate('/home')}
+                className="px-8 py-3 bg-gradient-to-r from-pink-500 to-violet-500 text-white rounded-lg 
+                         font-semibold shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+              >
+                Get Started
+              </button>
             </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-500 rounded-2xl blur-3xl opacity-20"></div>
+              <img
+                src={`${img1}`}
+                alt="AI Talking Bot"
+                className="relative rounded-2xl shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
+            <p className="text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              Our mission is to leverage advanced AI technology to offer accessible, personalized mental health 
+              support. We aim to create a safe and supportive environment where users can explore their feelings, 
+              receive guidance, and develop coping strategies to improve their mental well-being.
+            </p>
+          </div>
+          <div className="relative mt-12">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-500 rounded-3xl blur-3xl opacity-20"></div>
+            <img
+              src={`${img2}`}
+              alt="Nature"
+              className="relative rounded-3xl shadow-2xl w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+     
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+         
+            <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-white text-center mb-8">Our Team</h2>
+              <div className="space-y-6">
+                <TeamMember
+                  name="Sanchit Bajaj"
+                  role="Web Developer"
+                  email="Sanchitbajaj2003@gmail.com"
+                  imageSrc={`${sanchitImg}`}
+                />
+                <TeamMember
+                  name="Rahul"
+                  role="Web Developer"
+                  email="rgs786999@gmail.com"
+                  imageSrc={`${rahulImg}`}
+                />
+              </div>
+            </div>
+
        
-        </>
-    );
-}
+            <div id="feedback" className="bg-slate-800/50 rounded-2xl p-8">
+              <h2 className="text-3xl font-bold text-white text-center mb-8">Feedback</h2>
+              <form action="https://api.web3forms.com/submit" method="post" className="space-y-6">
+                <input type="hidden" name="access_key" value="1a562657-bc02-4007-bc9a-c4ada2a53918"/>
+                <FormField label="Name" type="text" name="name" required />
+                <FormField label="Email" type="email" name="email" required />
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Feedback</label>
+                  <textarea
+                    name="feedback"
+                    rows="4"
+                    className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg 
+                             text-white placeholder-slate-400 focus:outline-none focus:ring-2 
+                             focus:ring-pink-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-pink-500 to-violet-500 text-white 
+                           rounded-lg font-semibold shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                >
+                  Submit Feedback
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  
+      <footer className="py-8 px-4 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto text-center text-slate-400">
+          <p>© 2024 Asara GPT. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+const NavLink = ({ href, children }) => (
+  <a
+    href={href}
+    className="text-slate-300 hover:text-white px-4 py-2 rounded-lg hover:bg-slate-800 
+               transition-colors duration-200"
+  >
+    {children}
+  </a>
+);
+
+const TeamMember = ({ name, role, email, imageSrc }) => (
+  <div className="flex items-center space-x-4 bg-slate-800/50 p-4 rounded-xl hover:bg-slate-800 
+                  transition-colors duration-200">
+    <img
+      src={imageSrc}
+      alt={name}
+      className="w-16 h-16 rounded-full object-cover hover:scale-110 transition-transform duration-200"
+    />
+    <div>
+      <h3 className="text-white font-semibold">{name}</h3>
+      <p className="text-slate-400">{role}</p>
+      <p className="text-slate-500 text-sm">{email}</p>
+    </div>
+  </div>
+);
+
+const FormField = ({ label, type, name, required }) => (
+  <div>
+    <label className="block text-sm font-medium text-slate-300 mb-2">{label}</label>
+    <input
+      type={type}
+      name={name}
+      required={required}
+      className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white 
+                 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-pink-500 
+                 focus:border-transparent"
+    />
+  </div>
+);
 
 export default Intro;
