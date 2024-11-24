@@ -6,6 +6,7 @@ import img from "../assets/white-logo-nobackground.png"
 import img1 from "../assets/ai-talkingbot.png"
 import img2 from "../assets/beach.jpg"
 import { Menu, X } from "lucide-react";
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 const Intro = () => {
   const navigate = useNavigate();
@@ -133,12 +134,18 @@ const Intro = () => {
                   role="Web Developer"
                   email="Sanchitbajaj2003@gmail.com"
                   imageSrc={sanchitImg}
+                  linkedinUrl="https://www.linkedin.com/in/sanchit-bajaj-977908283/"
+                  githubUrl="https://github.com/sanchitbajaj123"
                 />
+              
+    
                 <TeamMember
                   name="Rahul"
                   role="Web Developer"
                   email="rgs786999@gmail.com"
                   imageSrc={rahulImg}
+                  linkedinUrl="https://www.linkedin.com/in/rahul0410/"
+                  githubUrl="https://github.com/Rahul-0410"
                 />
               </div>
             </div>
@@ -206,7 +213,7 @@ const MobileNavLink = ({ href, children, onClick }) => (
   </a>
 );
 
-const TeamMember = ({ name, role, email, imageSrc }) => (
+const TeamMember = ({ name, role, email, imageSrc,linkedinUrl,githubUrl,instagramUrl }) => (
   <div className="flex items-center space-x-4 bg-slate-800/50 p-4 rounded-xl hover:bg-slate-800 
                   transition-colors duration-200">
     <img
@@ -218,6 +225,26 @@ const TeamMember = ({ name, role, email, imageSrc }) => (
       <h3 className="text-white font-semibold">{name}</h3>
       <p className="text-slate-400">{role}</p>
       <p className="text-slate-500 text-sm">{email}</p>
+      <div style={{ display: "flex", gap: "8px",marginTop:"3px" }}>
+      <a
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink-500 hover:text-pink-400 text-lg "
+          aria-label={`LinkedIn profile of ${name}`}
+        >
+          <FaLinkedin />
+        </a>     
+        <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-pink-500 hover:text-pink-400 text-lg"
+            aria-label={`GitHub profile of ${name}`}
+          >
+            <FaGithub />
+          </a>
+          </div>
     </div>
   </div>
 );
