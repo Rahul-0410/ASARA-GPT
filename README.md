@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+Aasra GPT
+Aasra GPT is a personalized mental health chatbot designed to provide emotional support, coping strategies, and mental health resources. It leverages advanced AI models to create empathetic and meaningful conversations, offering accessible and confidential mental health support to users.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+💬 Personalized Conversations: Engages users in context-aware, tailored discussions.
+🧠 Mental Health Resources: Provides guided exercises, tips, and strategies for better well-being.
+🔒 Data Security: Powered by Google Cloud for secure and reliable data handling.
+🌐 Always Available: 24/7 access for users anywhere, anytime.
+🎨 Calming Interface: Minimalist design aimed at enhancing user comfort.
+Tech Stack
+Frontend
+React.js
+Tailwind CSS for modern styling
+Framer Motion for animations
+Backend
+Node.js
+Express.js
+MongoDB
+AI & Cloud Services
+OpenAI GPT models for conversational AI
+Google Cloud for data storage and deployment
+Gemini Flash for real-time performance
+Live Demo
+Experience Aasra GPT live: <a  href=" https://aasara-gptt.vercel.app/">View Here</a>
 
-## Available Scripts
 
-In the project directory, you can run:
+Screenshots
+![Screenshot (298)](https://github.com/user-attachments/assets/c96490b5-5efc-48a0-97b5-c7cb82e89dda)
+![Screenshot (299)](https://github.com/user-attachments/assets/b74ecd38-1177-4b60-9b3b-c5908b82d832)
+![Screenshot (300)](https://github.com/user-attachments/assets/4ac5d8b6-2530-4217-a3d6-8bb12d3c095b)
+![Screenshot (301)](https://github.com/user-attachments/assets/8d564efd-9b9f-4be2-b9d2-876e2c0bae2c)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Contributing
+We welcome your contributions to improve Aasra GPT!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Fork the repository.
+Create a feature branch:
+bash
+Copy code
+git checkout -b feature-name  
+Commit your changes:
+bash
+Copy code
+git commit -m "Added feature XYZ"  
+Push your branch:
+bash
+Copy code
+git push origin feature-name  
+Open a pull request for review.
+Contact
+For feedback, suggestions, or collaboration inquiries:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Email: sanchitbajaj2003@gmail.com
+LinkedIn: https://www.linkedin.com/in/sanchit-bajaj-977908283/
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
