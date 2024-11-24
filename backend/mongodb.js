@@ -12,7 +12,7 @@ const DB_NAME= `asra`
 const connectDb= async ()=>{
     try{
         await connect(`${MongoUrl}/${DB_NAME}`);
-        console.log("MongoDb Connected successfully!!");
+        
     } catch(err){
         console.error(err);
     }

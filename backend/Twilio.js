@@ -13,6 +13,6 @@ client.messages
         from: '+14808787901',
         to: '+918427533412'
     })
-    .then(message => console.log(message.sid));
+    .then(message => 
 
     

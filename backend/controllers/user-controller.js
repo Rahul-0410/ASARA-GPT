@@ -4,7 +4,7 @@ const twilio = require('twilio');
 
 const addNewUser = async(req, res) => {
     try {
-        console.log("Received payload:", req.body);
+        
         const { username, email, password, confirmpassword } = req.body;
         if (typeof req.body !== 'object' || req.body === null) {
             throw new InputValidationException('Invalid payload format.');
@@ -111,7 +111,7 @@ const sendMessage = async (req, res) => {
             to: '+918427533412'
         });
 
-        console.log(`Message sent with SID: ${message.sid}`);
+        
         res.status(200).send({ message: "Message sent successfully", messageSid: message.sid });
     } catch (error) {
         console.error(`Failed to send message. Error: ${error.message}`);
@@ -121,7 +121,7 @@ const sendMessage = async (req, res) => {
 const SendQustion=async (req,res)=>{
     try{
         const id=req.params.userId;
-        // console.log(id);
+        // 
         const user = await UserService.sendQustion(id);
         return res.status(200).send(user);
     }
@@ -133,7 +133,7 @@ const SendQustion=async (req,res)=>{
 const profile=async(req,res)=>{
     try{
         const id=req.params.userId;
-        console.log(id);
+        
         const user = await UserService.Profile(id);
         return res.status(200).send(user);
 

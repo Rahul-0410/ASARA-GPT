@@ -44,7 +44,7 @@ function Home() {
       const fetchedChats = await getChat();
       setChats(fetchedChats);
     };
-    console.log(chats);
+    
     
     fetchChats();
     const interval = setInterval(fetchChats, 1000);
@@ -92,7 +92,7 @@ function Home() {
       })}"
       and dont add this Aasra GPT: response pattern 
     `;
-    console.log(prompt)
+    
     const result = await model.generateContent(prompt);
     const aiResponse = result.response.text();
 

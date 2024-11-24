@@ -113,11 +113,11 @@ function Interactive() {
       msg.lang = 'en-US';
   
       msg.onstart = () => {
-        console.log('Speech started');
+        
       };
   
       msg.onend = () => {
-        console.log('Speech ended');
+        
         video.pause();
         video.loop = false;
         video.currentTime = 0;

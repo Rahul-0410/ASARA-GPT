@@ -2,7 +2,7 @@ import AsraApiBackend from "./Asra-api";
 
 export const logInUser = async({email,password}) => {
     const rep = await AsraApiBackend.post("/user/login", {email, password});
-    console.log(rep)
+    
     return rep.data;
 };
 

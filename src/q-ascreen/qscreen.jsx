@@ -37,7 +37,7 @@ const Questions = () => {
         ]);
 
         setSlideIn(false);
-        console.log(answers);
+        
         setTimeout(() => {
             if (currentQuestion === questions.length - 1) {
                 saveAnswers();
@@ -51,7 +51,7 @@ const Questions = () => {
     };
 
     const saveAnswers = () => {
-        console.log(answers);
+        
         questionsanssave(answers);
         nav('/home');
         

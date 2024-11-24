@@ -79,7 +79,7 @@ userSchema.statics.findByEmailAndPasswordForAuth = async (email, password) => {
         if (!isMatch) {
             throw new Error(`Invalid credentials`);
         }
-        console.log("Login Successful");
+        
         return user;
     } catch (err) {
         console.error(err);

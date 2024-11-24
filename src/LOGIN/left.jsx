@@ -19,7 +19,7 @@ function Left() {
         e.preventDefault();
         try {
             const response = await loginUser(userData);
-            console.log('Login success:', response);
+            
             // Show success toast with a tick icon and trigger login after
             toast.success(
                 <div>
@@ -53,7 +53,7 @@ function Left() {
     const handleGoogleLoginSuccess = async (credentialResponse) => {
         try {
             const response = await GoogleloginUser(credentialResponse.credential);
-            console.log('Google login success:', response);
+            
             // Show success toast with a tick icon and trigger login after
             toast.success(
                 <div>
@@ -85,11 +85,11 @@ function Left() {
 
             <GoogleLogin 
                 onSuccess={credentialResponse => {
-                    console.log(credentialResponse);
+                    
                     handleGoogleLoginSuccess(credentialResponse);
                 }}
                 onError={() => {
-                    console.log('Login Failed');
+                    
                     toast.error('Google login failed');
                 }}
             />
