@@ -30,7 +30,7 @@
 
 ### AI & Cloud Services
 
-- **OpenAI GPT models**: For generating empathetic and intelligent conversations.
+- **Gemini API**: For generating empathetic and intelligent conversations.
 - **Google Cloud**: For secure and scalable data storage and deployment.
 - **Gemini Flash**: For real-time performance and monitoring.
 
